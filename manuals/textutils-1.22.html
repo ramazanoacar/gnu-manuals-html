@@ -1,0 +1,4465 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.52
+     from ../texi/textutils.texi on 7 November 1998 -->
+
+<TITLE>GNU text utilities</TITLE>
+</HEAD>
+<BODY>
+<H1>GNU <CODE>textutils</CODE></H1>
+<H2>A set of text utilities</H2>
+<H2>for version 1.22, 1 January 1997</H2>
+<ADDRESS>David MacKenzie et al.</ADDRESS>
+<P>
+<P><HR><P>
+<H1>Table of Contents</H1>
+<UL>
+<LI><A NAME="TOC1" HREF="textutils.html#SEC1">Introduction</A>
+<LI><A NAME="TOC2" HREF="textutils.html#SEC2">Common options</A>
+<LI><A NAME="TOC3" HREF="textutils.html#SEC3">Output of entire files</A>
+<UL>
+<LI><A NAME="TOC4" HREF="textutils.html#SEC4"><CODE>cat</CODE>: Concatenate and write files</A>
+<LI><A NAME="TOC5" HREF="textutils.html#SEC5"><CODE>tac</CODE>: Concatenate and write files in reverse</A>
+<LI><A NAME="TOC6" HREF="textutils.html#SEC6"><CODE>nl</CODE>: Number lines and write files</A>
+<LI><A NAME="TOC7" HREF="textutils.html#SEC7"><CODE>od</CODE>: Write files in octal or other formats</A>
+</UL>
+<LI><A NAME="TOC8" HREF="textutils.html#SEC8">Formatting file contents</A>
+<UL>
+<LI><A NAME="TOC9" HREF="textutils.html#SEC9"><CODE>fmt</CODE>: Reformat paragraph text</A>
+<LI><A NAME="TOC10" HREF="textutils.html#SEC10"><CODE>pr</CODE>: Paginate or columnate files for printing</A>
+<LI><A NAME="TOC11" HREF="textutils.html#SEC11"><CODE>fold</CODE>: Wrap input lines to fit in specified width</A>
+</UL>
+<LI><A NAME="TOC12" HREF="textutils.html#SEC12">Output of parts of files</A>
+<UL>
+<LI><A NAME="TOC13" HREF="textutils.html#SEC13"><CODE>head</CODE>: Output the first part of files</A>
+<LI><A NAME="TOC14" HREF="textutils.html#SEC14"><CODE>tail</CODE>: Output the last part of files</A>
+<LI><A NAME="TOC15" HREF="textutils.html#SEC15"><CODE>split</CODE>: Split a file into fixed-size pieces</A>
+<LI><A NAME="TOC16" HREF="textutils.html#SEC16"><CODE>csplit</CODE>: Split a file into context-determined pieces</A>
+</UL>
+<LI><A NAME="TOC17" HREF="textutils.html#SEC17">Summarizing files</A>
+<UL>
+<LI><A NAME="TOC18" HREF="textutils.html#SEC18"><CODE>wc</CODE>: Print byte, word, and line counts</A>
+<LI><A NAME="TOC19" HREF="textutils.html#SEC19"><CODE>sum</CODE>: Print checksum and block counts</A>
+<LI><A NAME="TOC20" HREF="textutils.html#SEC20"><CODE>cksum</CODE>: Print CRC checksum and byte counts</A>
+<LI><A NAME="TOC21" HREF="textutils.html#SEC21"><CODE>md5sum</CODE>: Print or check message-digests</A>
+</UL>
+<LI><A NAME="TOC22" HREF="textutils.html#SEC22">Operating on sorted files</A>
+<UL>
+<LI><A NAME="TOC23" HREF="textutils.html#SEC23"><CODE>sort</CODE>: Sort text files</A>
+<LI><A NAME="TOC24" HREF="textutils.html#SEC24"><CODE>uniq</CODE>: Uniqify files</A>
+<LI><A NAME="TOC25" HREF="textutils.html#SEC25"><CODE>comm</CODE>: Compare two sorted files line by line</A>
+</UL>
+<LI><A NAME="TOC26" HREF="textutils.html#SEC26">Operating on fields within a line</A>
+<UL>
+<LI><A NAME="TOC27" HREF="textutils.html#SEC27"><CODE>cut</CODE>: Print selected parts of lines</A>
+<LI><A NAME="TOC28" HREF="textutils.html#SEC28"><CODE>paste</CODE>: Merge lines of files</A>
+<LI><A NAME="TOC29" HREF="textutils.html#SEC29"><CODE>join</CODE>: Join lines on a common field</A>
+</UL>
+<LI><A NAME="TOC30" HREF="textutils.html#SEC30">Operating on characters</A>
+<UL>
+<LI><A NAME="TOC31" HREF="textutils.html#SEC31"><CODE>tr</CODE>: Translate, squeeze, and/or delete characters</A>
+<UL>
+<LI><A NAME="TOC32" HREF="textutils.html#SEC32">Specifying sets of characters</A>
+<LI><A NAME="TOC33" HREF="textutils.html#SEC33">Translating</A>
+<LI><A NAME="TOC34" HREF="textutils.html#SEC34">Squeezing repeats and deleting</A>
+<LI><A NAME="TOC35" HREF="textutils.html#SEC35">Warning messages</A>
+</UL>
+<LI><A NAME="TOC36" HREF="textutils.html#SEC36"><CODE>expand</CODE>: Convert tabs to spaces</A>
+<LI><A NAME="TOC37" HREF="textutils.html#SEC37"><CODE>unexpand</CODE>: Convert spaces to tabs</A>
+</UL>
+<LI><A NAME="TOC38" HREF="textutils.html#SEC38">Opening the software toolbox</A>
+<UL>
+<LI><A NAME="TOC39" HREF="textutils.html#SEC39">Toolbox introduction</A>
+<LI><A NAME="TOC40" HREF="textutils.html#SEC40">I/O redirection</A>
+<LI><A NAME="TOC41" HREF="textutils.html#SEC41">The <CODE>who</CODE> command</A>
+<LI><A NAME="TOC42" HREF="textutils.html#SEC42">The <CODE>cut</CODE> command</A>
+<LI><A NAME="TOC43" HREF="textutils.html#SEC43">The <CODE>sort</CODE> command</A>
+<LI><A NAME="TOC44" HREF="textutils.html#SEC44">The <CODE>uniq</CODE> command</A>
+<LI><A NAME="TOC45" HREF="textutils.html#SEC45">Putting the tools together</A>
+</UL>
+<LI><A NAME="TOC46" HREF="textutils.html#SEC46">Index</A>
+</UL>
+<P><HR><P>
+
+<P>
+Copyright (C) 1994, 95, 96 Free Software Foundation, Inc.
+
+</P>
+<P>
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+</P>
+<P>
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+</P>
+<P>
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by the Foundation.
+
+</P>
+
+
+
+<H1><A NAME="SEC1" HREF="textutils.html#TOC1">Introduction</A></H1>
+
+<P>
+<A NAME="IDX1"></A>
+
+</P>
+<P>
+This manual is incomplete: No attempt is made to explain basic concepts
+in a way suitable for novices.  Thus, if you are interested, please get
+involved in improving this manual.  The entire GNU community will
+benefit.
+
+</P>
+<P>
+<A NAME="IDX2"></A>
+The GNU text utilities are mostly compatible with the POSIX.2 standard.
+
+</P>
+<P>
+<A NAME="IDX3"></A>
+Please report bugs to <SAMP>`<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4531203d3130312c2936682730223605222b306b242c6b282c316b202130">[email&#160;protected]</a>'</SAMP>.  Remember
+to include the version number, machine architecture, input files, and
+any other information needed to reproduce the bug: your input, what you
+expected, what you got, and why it is wrong.  Diffs are welcome, but
+please include a description of the problem as well, since this is
+sometimes difficult to infer. See section `Bugs' in <CITE>GNU CC</CITE>.
+
+</P>
+<P>
+This manual is based on the Unix man pages in the distribution, which
+were originally written by David MacKenzie and updated by Jim Meyering.
+The original <CODE>fmt</CODE> man page was written by Ross Paterson.
+Fran@,{c}ois Pinard did the initial conversion to Texinfo format.
+Karl Berry did the indexing, some reorganization, and editing of the results.
+Richard Stallman contributed his usual invaluable insights to the
+overall process.
+
+</P>
+
+
+
+<H1><A NAME="SEC2" HREF="textutils.html#TOC2">Common options</A></H1>
+
+<P>
+<A NAME="IDX4"></A>
+
+</P>
+<P>
+Certain options are available in all these programs.  Rather than
+writing identical descriptions for each of the programs, they are
+described here.  (In fact, every GNU program accepts (or should accept)
+these options.)
+
+</P>
+<P>
+A few of these programs take arbitrary strings as arguments.  In those
+cases, <SAMP>`--help'</SAMP> and <SAMP>`--version'</SAMP> are taken as these options
+only if there is one and exactly one command line argument.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`--help'</SAMP>
+<DD>
+<A NAME="IDX5"></A>
+<A NAME="IDX6"></A>
+Print a usage message listing all available options, then exit successfully.
+
+<DT><SAMP>`--version'</SAMP>
+<DD>
+<A NAME="IDX7"></A>
+<A NAME="IDX8"></A>
+Print the version number, then exit successfully.
+
+</DL>
+
+
+
+<H1><A NAME="SEC3" HREF="textutils.html#TOC3">Output of entire files</A></H1>
+
+<P>
+<A NAME="IDX9"></A>
+<A NAME="IDX10"></A>
+
+</P>
+<P>
+These commands read and write entire files, possibly transforming them
+in some way.
+
+</P>
+
+
+
+<H2><A NAME="SEC4" HREF="textutils.html#TOC4"><CODE>cat</CODE>: Concatenate and write files</A></H2>
+
+<P>
+<A NAME="IDX11"></A>
+<A NAME="IDX12"></A>
+<A NAME="IDX13"></A>
+
+</P>
+<P>
+<CODE>cat</CODE> copies each <VAR>file</VAR> (<SAMP>`-'</SAMP> means standard input), or
+standard input if none are given, to standard output.  Synopsis:
+
+</P>
+
+<PRE>
+cat [<VAR>option</VAR>] [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-A'</SAMP>
+<DD>
+<DT><SAMP>`--show-all'</SAMP>
+<DD>
+<A NAME="IDX14"></A>
+<A NAME="IDX15"></A>
+Equivalent to <SAMP>`-vET'</SAMP>.
+
+<DT><SAMP>`-b'</SAMP>
+<DD>
+<DT><SAMP>`--number-nonblank'</SAMP>
+<DD>
+<A NAME="IDX16"></A>
+<A NAME="IDX17"></A>
+Number all nonblank output lines, starting with 1.
+
+<DT><SAMP>`-e'</SAMP>
+<DD>
+<A NAME="IDX18"></A>
+Equivalent to <SAMP>`-vE'</SAMP>.
+
+<DT><SAMP>`-E'</SAMP>
+<DD>
+<DT><SAMP>`--show-ends'</SAMP>
+<DD>
+<A NAME="IDX19"></A>
+<A NAME="IDX20"></A>
+Display a <SAMP>`$'</SAMP> after the end of each line.
+
+<DT><SAMP>`-n'</SAMP>
+<DD>
+<DT><SAMP>`--number'</SAMP>
+<DD>
+<A NAME="IDX21"></A>
+<A NAME="IDX22"></A>
+Number all output lines, starting with 1.
+
+<DT><SAMP>`-s'</SAMP>
+<DD>
+<DT><SAMP>`--squeeze-blank'</SAMP>
+<DD>
+<A NAME="IDX23"></A>
+<A NAME="IDX24"></A>
+<A NAME="IDX25"></A>
+Replace multiple adjacent blank lines with a single blank line.
+
+<DT><SAMP>`-t'</SAMP>
+<DD>
+<A NAME="IDX26"></A>
+Equivalent to <SAMP>`-vT'</SAMP>.
+
+<DT><SAMP>`-T'</SAMP>
+<DD>
+<DT><SAMP>`--show-tabs'</SAMP>
+<DD>
+<A NAME="IDX27"></A>
+<A NAME="IDX28"></A>
+Display <KBD>TAB</KBD> characters as <SAMP>`^I'</SAMP>.
+
+<DT><SAMP>`-u'</SAMP>
+<DD>
+<A NAME="IDX29"></A>
+Ignored; for Unix compatibility.
+
+<DT><SAMP>`-v'</SAMP>
+<DD>
+<DT><SAMP>`--show-nonprinting'</SAMP>
+<DD>
+<A NAME="IDX30"></A>
+<A NAME="IDX31"></A>
+Display control characters except for <KBD>LFD</KBD> and <KBD>TAB</KBD> using
+<SAMP>`^'</SAMP> notation and precede characters that have the high bit set
+with <SAMP>`M-'</SAMP>.
+
+</DL>
+
+
+
+<H2><A NAME="SEC5" HREF="textutils.html#TOC5"><CODE>tac</CODE>: Concatenate and write files in reverse</A></H2>
+
+<P>
+<A NAME="IDX32"></A>
+<A NAME="IDX33"></A>
+
+</P>
+<P>
+<CODE>tac</CODE> copies each <VAR>file</VAR> (<SAMP>`-'</SAMP> means standard input), or
+standard input if none are given, to standard output, reversing the
+records (lines by default) in each separately.  Synopsis:
+
+</P>
+
+<PRE>
+tac [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+<EM>Records</EM> are separated by instances of a string (newline by
+default).  By default, this separator string is attached to the end of
+the record that it follows in the file.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-b'</SAMP>
+<DD>
+<DT><SAMP>`--before'</SAMP>
+<DD>
+<A NAME="IDX34"></A>
+<A NAME="IDX35"></A>
+The separator is attached to the beginning of the record that it
+precedes in the file.
+
+<DT><SAMP>`-r'</SAMP>
+<DD>
+<DT><SAMP>`--regex'</SAMP>
+<DD>
+<A NAME="IDX36"></A>
+<A NAME="IDX37"></A>
+Treat the separator string as a regular expression.
+
+<DT><SAMP>`-s <VAR>separator</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--separator=<VAR>separator</VAR>'</SAMP>
+<DD>
+<A NAME="IDX38"></A>
+<A NAME="IDX39"></A>
+Use <VAR>separator</VAR> as the record separator, instead of newline.
+
+</DL>
+
+
+
+<H2><A NAME="SEC6" HREF="textutils.html#TOC6"><CODE>nl</CODE>: Number lines and write files</A></H2>
+
+<P>
+<A NAME="IDX40"></A>
+<A NAME="IDX41"></A>
+<A NAME="IDX42"></A>
+
+</P>
+<P>
+<CODE>nl</CODE> writes each <VAR>file</VAR> (<SAMP>`-'</SAMP> means standard input), or
+standard input if none are given, to standard output, with line numbers
+added to some or all of the lines.  Synopsis:
+
+</P>
+
+<PRE>
+nl [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+<A NAME="IDX43"></A>
+<CODE>nl</CODE> decomposes its input into (logical) pages; by default, the
+line number is reset to 1 at the top of each logical page.  <CODE>nl</CODE>
+treats all of the input files as a single document; it does not reset
+line numbers or logical pages between files.
+
+</P>
+<P>
+<A NAME="IDX44"></A>
+<A NAME="IDX45"></A>
+<A NAME="IDX46"></A>
+A logical page consists of three sections: header, body, and footer.
+Any of the sections can be empty.  Each can be numbered in a different
+style from the others.
+
+</P>
+<P>
+The beginnings of the sections of logical pages are indicated in the
+input file by a line containing exactly one of these delimiter strings:
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`\:\:\:'</SAMP>
+<DD>
+start of header;
+<DT><SAMP>`\:\:'</SAMP>
+<DD>
+start of body;
+<DT><SAMP>`\:'</SAMP>
+<DD>
+start of footer.
+</DL>
+
+<P>
+The two characters from which these strings are made can be changed from
+<SAMP>`\'</SAMP> and <SAMP>`:'</SAMP> via options (see below), but the pattern and
+length of each string cannot be changed.
+
+</P>
+<P>
+A section delimiter is replaced by an empty line on output.  Any text
+that comes before the first section delimiter string in the input file
+is considered to be part of a body section, so <CODE>nl</CODE> treats a
+file that contains no section delimiters as a single body section.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-b <VAR>style</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--body-numbering=<VAR>style</VAR>'</SAMP>
+<DD>
+<A NAME="IDX47"></A>
+<A NAME="IDX48"></A>
+Select the numbering style for lines in the body section of each
+logical page.  When a line is not numbered, the current line number
+is not incremented, but the line number separator character is still
+prepended to the line.  The styles are:
+
+<DL COMPACT>
+
+<DT><SAMP>`a'</SAMP>
+<DD>
+number all lines,
+<DT><SAMP>`t'</SAMP>
+<DD>
+number only nonempty lines (default for body),
+<DT><SAMP>`n'</SAMP>
+<DD>
+do not number lines (default for header and footer),
+<DT><SAMP>`p<VAR>regexp</VAR>'</SAMP>
+<DD>
+number only lines that contain a match for <VAR>regexp</VAR>.
+</DL>
+
+<DT><SAMP>`-d <VAR>cd</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--section-delimiter=<VAR>cd</VAR>'</SAMP>
+<DD>
+<A NAME="IDX49"></A>
+<A NAME="IDX50"></A>
+<A NAME="IDX51"></A>
+Set the section delimiter characters to <VAR>cd</VAR>; default is
+<SAMP>`\:'</SAMP>. If only <VAR>c</VAR> is given, the second remains <SAMP>`:'</SAMP>.
+(Remember to protect <SAMP>`\'</SAMP> or other metacharacters from shell
+expansion with quotes or extra backslashes.)
+
+<DT><SAMP>`-f <VAR>style</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--footer-numbering=<VAR>style</VAR>'</SAMP>
+<DD>
+<A NAME="IDX52"></A>
+<A NAME="IDX53"></A>
+Analogous to <SAMP>`--body-numbering'</SAMP>.
+
+<DT><SAMP>`-h <VAR>style</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--header-numbering=<VAR>style</VAR>'</SAMP>
+<DD>
+<A NAME="IDX54"></A>
+<A NAME="IDX55"></A>
+Analogous to <SAMP>`--body-numbering'</SAMP>.
+
+<DT><SAMP>`-i <VAR>number</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--page-increment=<VAR>number</VAR>'</SAMP>
+<DD>
+<A NAME="IDX56"></A>
+<A NAME="IDX57"></A>
+Increment line numbers by <VAR>number</VAR> (default 1).
+
+<DT><SAMP>`-l <VAR>number</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--join-blank-lines=<VAR>number</VAR>'</SAMP>
+<DD>
+<A NAME="IDX58"></A>
+<A NAME="IDX59"></A>
+<A NAME="IDX60"></A>
+<A NAME="IDX61"></A>
+Consider <VAR>number</VAR> (default 1) consecutive empty lines to be one
+logical line for numbering, and only number the last one.  Where fewer
+than <VAR>number</VAR> consecutive empty lines occur, do not number them.
+An empty line is one that contains no characters, not even spaces
+or tabs.
+
+<DT><SAMP>`-n <VAR>format</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--number-format=<VAR>format</VAR>'</SAMP>
+<DD>
+<A NAME="IDX62"></A>
+<A NAME="IDX63"></A>
+Select the line numbering format (default is <CODE>rn</CODE>):
+
+<DL COMPACT>
+
+<DT><SAMP>`ln'</SAMP>
+<DD>
+<A NAME="IDX64"></A>
+left justified, no leading zeros;
+<DT><SAMP>`rn'</SAMP>
+<DD>
+<A NAME="IDX65"></A>
+right justified, no leading zeros;
+<DT><SAMP>`rz'</SAMP>
+<DD>
+<A NAME="IDX66"></A>
+right justified, leading zeros.
+</DL>
+
+<DT><SAMP>`-p'</SAMP>
+<DD>
+<DT><SAMP>`--no-renumber'</SAMP>
+<DD>
+<A NAME="IDX67"></A>
+<A NAME="IDX68"></A>
+Do not reset the line number at the start of a logical page.
+
+<DT><SAMP>`-s <VAR>string</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--number-separator=<VAR>string</VAR>'</SAMP>
+<DD>
+<A NAME="IDX69"></A>
+<A NAME="IDX70"></A>
+Separate the line number from the text line in the output with
+<VAR>string</VAR> (default is <KBD>TAB</KBD>).
+
+<DT><SAMP>`-v <VAR>number</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--starting-line-number=<VAR>number</VAR>'</SAMP>
+<DD>
+<A NAME="IDX71"></A>
+<A NAME="IDX72"></A>
+Set the initial line number on each logical page to <VAR>number</VAR> (default 1).
+
+<DT><SAMP>`-w <VAR>number</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--number-width=<VAR>number</VAR>'</SAMP>
+<DD>
+<A NAME="IDX73"></A>
+<A NAME="IDX74"></A>
+Use <VAR>number</VAR> characters for line numbers (default 6).
+
+</DL>
+
+
+
+<H2><A NAME="SEC7" HREF="textutils.html#TOC7"><CODE>od</CODE>: Write files in octal or other formats</A></H2>
+
+<P>
+<A NAME="IDX75"></A>
+<A NAME="IDX76"></A>
+<A NAME="IDX77"></A>
+<A NAME="IDX78"></A>
+<A NAME="IDX79"></A>
+
+</P>
+<P>
+<CODE>od</CODE> writes an unambiguous representation of each <VAR>file</VAR>
+(<SAMP>`-'</SAMP> means standard input), or standard input if none are given.
+Synopsis:
+
+</P>
+
+<PRE>
+od [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+od -C [<VAR>file</VAR>] [[+]<VAR>offset</VAR> [[+]<VAR>label</VAR>]]
+</PRE>
+
+<P>
+Each line of output consists of the offset in the input, followed by
+groups of data from the file. By default, <CODE>od</CODE> prints the offset in
+octal, and each group of file data is two bytes of input printed as a
+single octal number.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-A <VAR>radix</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--address-radix=<VAR>radix</VAR>'</SAMP>
+<DD>
+<A NAME="IDX80"></A>
+<A NAME="IDX81"></A>
+<A NAME="IDX82"></A>
+<A NAME="IDX83"></A>
+Select the base in which file offsets are printed.  <VAR>radix</VAR> can
+be one of the following:
+
+<DL COMPACT>
+
+<DT><SAMP>`d'</SAMP>
+<DD>
+decimal;
+<DT><SAMP>`o'</SAMP>
+<DD>
+octal;
+<DT><SAMP>`x'</SAMP>
+<DD>
+hexadecimal;
+<DT><SAMP>`n'</SAMP>
+<DD>
+none (do not print offsets).
+</DL>
+
+The default is octal.
+
+<DT><SAMP>`-j <VAR>bytes</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--skip-bytes=<VAR>bytes</VAR>'</SAMP>
+<DD>
+<A NAME="IDX84"></A>
+<A NAME="IDX85"></A>
+Skip <VAR>bytes</VAR> input bytes before formatting and writing.  If
+<VAR>bytes</VAR> begins with <SAMP>`0x'</SAMP> or <SAMP>`0X'</SAMP>, it is interpreted in
+hexadecimal; otherwise, if it begins with <SAMP>`0'</SAMP>, in octal; otherwise,
+in decimal.  Appending <SAMP>`b'</SAMP> multiplies <VAR>bytes</VAR> by 512, <SAMP>`k'</SAMP>
+by 1024, and <SAMP>`m'</SAMP> by 1048576.
+
+<DT><SAMP>`-N <VAR>bytes</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--read-bytes=<VAR>bytes</VAR>'</SAMP>
+<DD>
+<A NAME="IDX86"></A>
+<A NAME="IDX87"></A>
+Output at most <VAR>bytes</VAR> bytes of the input.  Prefixes and suffixes on
+<CODE>bytes</CODE> are interpreted as for the <SAMP>`-j'</SAMP> option.
+
+<DT><SAMP>`-s [<VAR>n</VAR>]'</SAMP>
+<DD>
+<DT><SAMP>`--strings[=<VAR>n</VAR>]'</SAMP>
+<DD>
+<A NAME="IDX88"></A>
+<A NAME="IDX89"></A>
+<A NAME="IDX90"></A>
+Instead of the normal output, output only <EM>string constants</EM>: at
+least <VAR>n</VAR> (3 by default) consecutive ASCII graphic characters,
+followed by a null (zero) byte.
+
+<DT><SAMP>`-t <VAR>type</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--format=<VAR>type</VAR>'</SAMP>
+<DD>
+<A NAME="IDX91"></A>
+<A NAME="IDX92"></A>
+Select the format in which to output the file data.  <VAR>type</VAR> is a
+string of one or more of the below type indicator characters.  If you
+include more than one type indicator character in a single <VAR>type</VAR>
+string, or use this option more than once, <CODE>od</CODE> writes one copy
+of each output line using each of the data types that you specified,
+in the order that you specified.
+
+<DL COMPACT>
+
+<DT><SAMP>`a'</SAMP>
+<DD>
+named character,
+<DT><SAMP>`c'</SAMP>
+<DD>
+ASCII character or backslash escape,
+<DT><SAMP>`d'</SAMP>
+<DD>
+signed decimal,
+<DT><SAMP>`f'</SAMP>
+<DD>
+floating point,
+<DT><SAMP>`o'</SAMP>
+<DD>
+octal,
+<DT><SAMP>`u'</SAMP>
+<DD>
+unsigned decimal,
+<DT><SAMP>`x'</SAMP>
+<DD>
+hexadecimal.
+</DL>
+
+The type <CODE>a</CODE> outputs things like <SAMP>`sp'</SAMP> for space, <SAMP>`nl'</SAMP> for
+newline, and <SAMP>`nul'</SAMP> for a null (zero) byte.  Type <CODE>c</CODE> outputs
+<SAMP>` '</SAMP>, <SAMP>`\n'</SAMP>, and <CODE>\0</CODE>, respectively.
+
+<A NAME="IDX93"></A>
+Except for types <SAMP>`a'</SAMP> and <SAMP>`c'</SAMP>, you can specify the number
+of bytes to use in interpreting each number in the given data type
+by following the type indicator character with a decimal integer.
+Alternately, you can specify the size of one of the C compiler's
+built-in data types by following the type indicator character with
+one of the following characters.  For integers (<SAMP>`d'</SAMP>, <SAMP>`o'</SAMP>,
+<SAMP>`u'</SAMP>, <SAMP>`x'</SAMP>):
+
+<DL COMPACT>
+
+<DT><SAMP>`C'</SAMP>
+<DD>
+char,
+<DT><SAMP>`S'</SAMP>
+<DD>
+short,
+<DT><SAMP>`I'</SAMP>
+<DD>
+int,
+<DT><SAMP>`L'</SAMP>
+<DD>
+long.
+</DL>
+
+For floating point (<CODE>f</CODE>):
+
+<DL COMPACT>
+
+<DT>F
+<DD>
+float,
+<DT>D
+<DD>
+double,
+<DT>L
+<DD>
+long double.
+</DL>
+
+<DT><SAMP>`-v'</SAMP>
+<DD>
+<DT><SAMP>`--output-duplicates'</SAMP>
+<DD>
+<A NAME="IDX94"></A>
+<A NAME="IDX95"></A>
+Output consecutive lines that are identical.  By default, when two or
+more consecutive output lines would be identical, <CODE>od</CODE> outputs only
+the first line, and puts just an asterisk on the following line to
+indicate the elision.
+
+<DT><SAMP>`-w[<VAR>n</VAR>]'</SAMP>
+<DD>
+<DT><SAMP>`--width[=<VAR>n</VAR>]'</SAMP>
+<DD>
+<A NAME="IDX96"></A>
+<A NAME="IDX97"></A>
+Dump <CODE>n</CODE> input bytes per output line.  This must be a multiple of
+the least common multiple of the sizes associated with the specified
+output types.  If <VAR>n</VAR> is omitted, the default is 32.  If this option
+is not given at all, the default is 16.
+
+</DL>
+
+<P>
+The next several options map the old, pre-POSIX format specification
+options to the corresponding POSIX format specs.  GNU <CODE>od</CODE> accepts
+any combination of old- and new-style options.  Format specification
+options accumulate.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-a'</SAMP>
+<DD>
+<A NAME="IDX98"></A>
+Output as named characters.  Equivalent to <SAMP>`-ta'</SAMP>.
+
+<DT><SAMP>`-b'</SAMP>
+<DD>
+<A NAME="IDX99"></A>
+Output as octal bytes.  Equivalent to <SAMP>`-toC'</SAMP>.
+
+<DT><SAMP>`-c'</SAMP>
+<DD>
+<A NAME="IDX100"></A>
+Output as ASCII characters or backslash escapes.  Equivalent to
+<SAMP>`-tc'</SAMP>.
+
+<DT><SAMP>`-d'</SAMP>
+<DD>
+<A NAME="IDX101"></A>
+Output as unsigned decimal shorts.  Equivalent to <SAMP>`-tu2'</SAMP>.
+
+<DT><SAMP>`-f'</SAMP>
+<DD>
+<A NAME="IDX102"></A>
+Output as floats.  Equivalent to <SAMP>`-tfF'</SAMP>.
+
+<DT><SAMP>`-h'</SAMP>
+<DD>
+<A NAME="IDX103"></A>
+Output as hexadecimal shorts.  Equivalent to <SAMP>`-tx2'</SAMP>.
+
+<DT><SAMP>`-i'</SAMP>
+<DD>
+<A NAME="IDX104"></A>
+Output as decimal shorts.  Equivalent to <SAMP>`-td2'</SAMP>.
+
+<DT><SAMP>`-l'</SAMP>
+<DD>
+<A NAME="IDX105"></A>
+Output as decimal longs.  Equivalent to <SAMP>`-td4'</SAMP>.
+
+<DT><SAMP>`-o'</SAMP>
+<DD>
+<A NAME="IDX106"></A>
+Output as octal shorts.  Equivalent to <SAMP>`-to2'</SAMP>.
+
+<DT><SAMP>`-x'</SAMP>
+<DD>
+<A NAME="IDX107"></A>
+Output as hexadecimal shorts.  Equivalent to <SAMP>`-tx2'</SAMP>.
+
+<DT><SAMP>`-C'</SAMP>
+<DD>
+<DT><SAMP>`--traditional'</SAMP>
+<DD>
+<A NAME="IDX108"></A>
+Recognize the pre-POSIX non-option arguments that traditional <CODE>od</CODE>
+accepted.  The following syntax:
+
+
+<PRE>
+od --traditional [<VAR>file</VAR>] [[+]<VAR>offset</VAR>[.][b] [[+]<VAR>label</VAR>[.][b]]]
+</PRE>
+
+can be used to specify at most one file and optional arguments
+specifying an offset and a pseudo-start address, <VAR>label</VAR>.  By
+default, <VAR>offset</VAR> is interpreted as an octal number specifying how
+many input bytes to skip before formatting and writing.  The optional
+trailing decimal point forces the interpretation of <VAR>offset</VAR> as a
+decimal number.  If no decimal is specified and the offset begins with
+<SAMP>`0x'</SAMP> or <SAMP>`0X'</SAMP> it is interpreted as a hexadecimal number.  If
+there is a trailing <SAMP>`b'</SAMP>, the number of bytes skipped will be
+<VAR>offset</VAR> multiplied by 512.  The <VAR>label</VAR> argument is interpreted
+just like <VAR>offset</VAR>, but it specifies an initial pseudo-address.  The
+pseudo-addresses are displayed in parentheses following any normal
+address.
+
+</DL>
+
+
+
+<H1><A NAME="SEC8" HREF="textutils.html#TOC8">Formatting file contents</A></H1>
+
+<P>
+<A NAME="IDX109"></A>
+
+</P>
+<P>
+These commands reformat the contents of files.
+
+</P>
+
+
+
+<H2><A NAME="SEC9" HREF="textutils.html#TOC9"><CODE>fmt</CODE>: Reformat paragraph text</A></H2>
+
+<P>
+<A NAME="IDX110"></A>
+<A NAME="IDX111"></A>
+<A NAME="IDX112"></A>
+<A NAME="IDX113"></A>
+
+</P>
+<P>
+<CODE>fmt</CODE> fills and joins lines to produce output lines of (at most)
+a given number of characters (75 by default).  Synopsis:
+
+</P>
+
+<PRE>
+fmt [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+<CODE>fmt</CODE> reads from the specified <VAR>file</VAR> arguments (or standard
+input if none are given), and writes to standard output.
+
+</P>
+<P>
+By default, blank lines, spaces between words, and indentation are
+preserved in the output; successive input lines with different
+indentation are not joined; tabs are expanded on input and introduced on
+output.
+
+</P>
+<P>
+<A NAME="IDX114"></A>
+<A NAME="IDX115"></A>
+<A NAME="IDX116"></A>
+<A NAME="IDX117"></A>
+<CODE>fmt</CODE> prefers breaking lines at the end of a sentence, and tries to
+avoid line breaks after the first word of a sentence or before the last
+word of a sentence.  A <EM>sentence break</EM> is defined as either the end
+of a paragraph or a word ending in any of <SAMP>`.?!'</SAMP>, followed by two
+spaces or end of line, ignoring any intervening parentheses or quotes.
+Like TeX, <CODE>fmt</CODE> reads entire "paragraphs" before choosing line
+breaks; the algorithm is a variant of that in "Breaking Paragraphs Into
+Lines" (Donald E. Knuth and Michael F. Plass, <CITE>Software--Practice
+and Experience</CITE>, 11 (1981), 1119--1184).
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-c'</SAMP>
+<DD>
+<DT><SAMP>`--crown-margin'</SAMP>
+<DD>
+<A NAME="IDX118"></A>
+<A NAME="IDX119"></A>
+<A NAME="IDX120"></A>
+<EM>Crown margin</EM> mode: preserve the indentation of the first two
+lines within a paragraph, and align the left margin of each subsequent
+line with that of the second line.
+
+<DT><SAMP>`-t'</SAMP>
+<DD>
+<DT><SAMP>`--tagged-paragraph'</SAMP>
+<DD>
+<A NAME="IDX121"></A>
+<A NAME="IDX122"></A>
+<A NAME="IDX123"></A>
+<EM>Tagged paragraph</EM> mode: like crown margin mode, except that if
+indentation of the first line of a paragraph is the same as the
+indentation of the second, the first line is treated as a one-line
+paragraph.
+
+<DT><SAMP>`-s'</SAMP>
+<DD>
+<DT><SAMP>`--split-only'</SAMP>
+<DD>
+<A NAME="IDX124"></A>
+<A NAME="IDX125"></A>
+Split lines only.  Do not join short lines to form longer ones.  This
+prevents sample lines of code, and other such "formatted" text from
+being unduly combined.
+
+<DT><SAMP>`-u'</SAMP>
+<DD>
+<DT><SAMP>`--uniform-spacing'</SAMP>
+<DD>
+<A NAME="IDX126"></A>
+<A NAME="IDX127"></A>
+Uniform spacing.  Reduce spacing between words to one space, and spacing
+between sentences to two spaces.
+
+<DT><SAMP>`-<VAR>width</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`-w <VAR>width</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--width=<VAR>width</VAR>'</SAMP>
+<DD>
+<A NAME="IDX128"></A>
+<A NAME="IDX129"></A>
+<A NAME="IDX130"></A>
+Fill output lines up to <VAR>width</VAR> characters (default 75).  <CODE>fmt</CODE>
+initially tries to make lines about 7% shorter than this, to give it
+room to balance line lengths.
+
+<DT><SAMP>`-p <VAR>prefix</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--prefix=<VAR>prefix</VAR>'</SAMP>
+<DD>
+Only lines beginning with <VAR>prefix</VAR> (possibly preceded by whitespace)
+are subject to formatting. The prefix and any preceding whitespace are
+stripped for the formatting and then re-attached to each formatted output
+line.  One use is to format certain kinds of program comments, while
+leaving the code unchanged.
+
+</DL>
+
+
+
+<H2><A NAME="SEC10" HREF="textutils.html#TOC10"><CODE>pr</CODE>: Paginate or columnate files for printing</A></H2>
+
+<P>
+<A NAME="IDX131"></A>
+<A NAME="IDX132"></A>
+<A NAME="IDX133"></A>
+<A NAME="IDX134"></A>
+
+</P>
+<P>
+<CODE>pr</CODE> writes each <VAR>file</VAR> (<SAMP>`-'</SAMP> means standard input), or
+standard input if none are given, to standard output, paginating and
+optionally outputting in multicolumn format; optionally merges all
+<VAR>file</VAR>s, printing all in parallel, one per column.  Synopsis:
+
+</P>
+
+<PRE>
+pr [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+By default, a 5-line header is printed: two blank lines; a line with the
+date, the file name, and the page count; and two more blank lines.  A
+footer of five blank lines is also printed. With the <SAMP>`-f'</SAMP> option, a
+3-line header is printed: the leading two blank lines are omitted; no
+footer used. The default <VAR>page_length</VAR> in both cases is 66 lines.
+The text line of the header takes up the full <VAR>page_width</VAR> in the
+form <SAMP>`yy-mm-dd HH:MM string Page nnnn'</SAMP>. String is a centered
+string.
+
+</P>
+<P>
+Form feeds in the input cause page breaks in the output. Multiple form
+feeds produce empty pages.
+
+</P>
+<P>
+Columns have equal width, separated by an optional string (default
+space). Lines will always be truncated to line width (default 72),
+unless you use the <SAMP>`-j'</SAMP> option. For single column output no line
+truncation occurs by default. Use <SAMP>`-w'</SAMP> option to truncate lines
+in that case.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`+<VAR>first_page</VAR>[<VAR>:last_page</VAR>]'</SAMP>
+<DD>
+<A NAME="IDX135"></A>
+Begin printing with page <VAR>first_page</VAR> and stop with
+<VAR>last_page</VAR>. Missing <SAMP>`:LAST_PAGE'</SAMP> implies end of file. While
+estimating the number of skipped pages each form feed in the input file
+results in a new page. Page counting with and without
+<SAMP>`+<VAR>first_page</VAR>'</SAMP> is identical. By default, it starts with the
+first page of input file (not first page printed). Page numbering may be
+altered by <SAMP>`-N'</SAMP> option.
+
+<DT><SAMP>`-<VAR>column</VAR>'</SAMP>
+<DD>
+<A NAME="IDX136"></A>
+<A NAME="IDX137"></A>
+With each single <VAR>file</VAR>, produce <VAR>column</VAR>-column output and
+print columns down. The column width is automatically estimated from
+<VAR>page_width</VAR>. This option might well cause some columns to be
+truncated. The number of lines in the columns on each page will be
+balanced. <SAMP>`-<VAR>column</VAR>'</SAMP> may not be used with <SAMP>`-m'</SAMP> option.
+
+<DT><SAMP>`-a'</SAMP>
+<DD>
+<A NAME="IDX138"></A>
+<A NAME="IDX139"></A>
+With each single <VAR>file</VAR>, print columns across rather than down.
+<VAR>column</VAR> must be greater than one.
+
+<DT><SAMP>`-c'</SAMP>
+<DD>
+<A NAME="IDX140"></A>
+Print control characters using hat notation (e.g., <SAMP>`^G'</SAMP>); print
+other unprintable characters in octal backslash notation.  By default,
+unprintable characters are not changed.
+
+<DT><SAMP>`-d'</SAMP>
+<DD>
+<A NAME="IDX141"></A>
+<A NAME="IDX142"></A>
+Double space the output.
+
+<DT><SAMP>`-e[<VAR>in-tabchar</VAR>[<VAR>in-tabwidth</VAR>]]'</SAMP>
+<DD>
+<A NAME="IDX143"></A>
+<A NAME="IDX144"></A>
+Expand tabs to spaces on input.  Optional argument <VAR>in-tabchar</VAR> is
+the input tab character (default is <KBD>TAB</KBD>).  Second optional
+argument <VAR>in-tabwidth</VAR> is the input tab character's width (default
+is 8).
+
+<DT><SAMP>`-f'</SAMP>
+<DD>
+<DT><SAMP>`-F'</SAMP>
+<DD>
+<A NAME="IDX145"></A>
+<A NAME="IDX146"></A>
+Use a form feed instead of newlines to separate output pages. Default
+page length of 66 lines is not altered. But the number of lines of text
+per page changes from 56 to 63 lines.
+
+<DT><SAMP>`-h <VAR>HEADER</VAR>'</SAMP>
+<DD>
+<A NAME="IDX147"></A>
+Replace the file name in the header with the centered string
+<VAR>header</VAR>. Left-hand-side truncation (marked by a <SAMP>`*'</SAMP>) may occur
+if the total header line <SAMP>`yy-mm-dd HH:MM HEADER Page nnnn'</SAMP>
+becomes larger than <VAR>page_width</VAR>. <SAMP>`-h ""'</SAMP> prints a blank line
+header. Don't use <SAMP>`-h""'</SAMP>. A space between the -h option and the
+argument is always peremptory.
+
+<DT><SAMP>`-i[<VAR>out-tabchar</VAR>[<VAR>out-tabwidth</VAR>]]'</SAMP>
+<DD>
+<A NAME="IDX148"></A>
+<A NAME="IDX149"></A>
+Replace spaces with tabs on output.  Optional argument <VAR>out-tabchar</VAR>
+is the output tab character (default is <KBD>TAB</KBD>).  Second optional
+argument <VAR>out-tabwidth</VAR> is the output tab character's width (default
+is 8).
+
+<DT><SAMP>`-j'</SAMP>
+<DD>
+<A NAME="IDX150"></A>
+Merge lines of full length. Used together with the column options
+<SAMP>`-<VAR>column</VAR>'</SAMP>, <SAMP>`-a -<VAR>column</VAR>'</SAMP> or <SAMP>`-m'</SAMP>. Turns off
+<SAMP>`-w'</SAMP> line truncation; no column alignment used; may be used with
+<SAMP>`-s[<VAR>separator</VAR>]'</SAMP>.
+
+<DT><SAMP>`-l <VAR>page_length</VAR>'</SAMP>
+<DD>
+<A NAME="IDX151"></A>
+Set the page length to <VAR>page_length</VAR> (default 66) lines. If
+<VAR>page_length</VAR> is less than or equal 10 (and &#60;= 3 with <SAMP>`-f'</SAMP>),
+the headers and footers are omitted, and all form feeds set in input
+files are eliminated, as if the <SAMP>`-T'</SAMP> option had been given.
+
+<DT><SAMP>`-m'</SAMP>
+<DD>
+<A NAME="IDX152"></A>
+Merge and print all <VAR>file</VAR>s in parallel, one in each column. If a
+line is too long to fit in a column, it is truncated (but see
+<SAMP>`-j'</SAMP>). <SAMP>`-s[<VAR>separator</VAR>]'</SAMP> may be used. Empty pages in some
+<VAR>file</VAR>s (form feeds set) produce empty columns, still marked by
+<VAR>separator</VAR>. Completely empty common pages show no separators or
+line numbers. The default header becomes
+<SAMP>`yy-mm-dd HH:MM &#60;blanks&#62; Page nnnn'</SAMP>; may be used with
+<SAMP>`-h <VAR>header</VAR>'</SAMP> to fill up the middle part.
+
+<DT><SAMP>`-n[<VAR>number-separator</VAR>[<VAR>digits</VAR>]]'</SAMP>
+<DD>
+<A NAME="IDX153"></A>
+Precede each column with a line number; with parallel <VAR>file</VAR>s
+(<SAMP>`-m'</SAMP>), precede only each line with a line number. Optional argument
+<VAR>number-separator</VAR> is the character to print after each number
+(default is <KBD>TAB</KBD>).  Optional argument <VAR>digits</VAR> is the number of
+digits per line number (default is 5). Default line counting starts with
+first line of the input file (not with the first line printed, see
+<SAMP>`-N'</SAMP>).
+
+<DT><SAMP>`-N <VAR>line_number</VAR>'</SAMP>
+<DD>
+<A NAME="IDX154"></A>
+Start line counting with no. <VAR>line_number</VAR> at first line of first
+page printed.
+
+<DT><SAMP>`-o <VAR>n</VAR>'</SAMP>
+<DD>
+<A NAME="IDX155"></A>
+<A NAME="IDX156"></A>
+<A NAME="IDX157"></A>
+Indent each line with <VAR>n</VAR> (default is zero) spaces wide, i.e., set
+the left margin.  The total page width is <VAR>n</VAR> plus the width set
+with the <SAMP>`-w'</SAMP> option.
+
+<DT><SAMP>`-r'</SAMP>
+<DD>
+<A NAME="IDX158"></A>
+Do not print a warning message when an argument <VAR>file</VAR> cannot be
+opened.  (The exit status will still be nonzero, however.)
+
+<DT><SAMP>`-s[<VAR>separator</VAR>]'</SAMP>
+<DD>
+<A NAME="IDX159"></A>
+Separate columns by a string <VAR>separator</VAR>. Don't use
+<SAMP>`-s <VAR>separator</VAR>'</SAMP>, no space between flag and argument. If this
+option is omitted altogether, the default is a space, same as
+<SAMP>`-s" "'</SAMP>. With <SAMP>`-s'</SAMP> only, no separator is used, same as
+<SAMP>`-s""'</SAMP>. <SAMP>`-s'</SAMP> does not affect line truncation or column
+alignment.
+
+<DT><SAMP>`-t'</SAMP>
+<DD>
+<A NAME="IDX160"></A>
+Do not print the usual header [and footer] on each page, and do not fill
+out the bottoms of pages (with blank lines or a form feed). No page
+structure is produced, but retain form feeds set in the input files. The
+predefined page layout is not changed. <SAMP>`-t'</SAMP> or <SAMP>`-T'</SAMP> may be
+useful together with other options; e.g.: <SAMP>`-t -e4'</SAMP>, expand
+<KBD>TAB</KBD> in the input file to 4 spaces but do not do any other changes.
+Use of <SAMP>`-t'</SAMP> overrides <SAMP>`-h'</SAMP>.
+
+<DT><SAMP>`-T'</SAMP>
+<DD>
+<A NAME="IDX161"></A>
+Do not print header [and footer]. In addition eliminate all form feeds
+set in the input files.
+
+<DT><SAMP>`-v'</SAMP>
+<DD>
+<A NAME="IDX162"></A>
+Print unprintable characters in octal backslash notation.
+
+<DT><SAMP>`-w <VAR>page_width</VAR>'</SAMP>
+<DD>
+<A NAME="IDX163"></A>
+Set the page width to <VAR>page_width</VAR> (default 72) characters.
+With/without <SAMP>`-w'</SAMP>, header lines are always truncated to
+<VAR>page_width</VAR> characters. With <SAMP>`-w'</SAMP>, text lines are truncated,
+unless <SAMP>`-j'</SAMP> is used. Without <SAMP>`-w'</SAMP> together with one of the
+column options <SAMP>`-<VAR>column</VAR>'</SAMP>, <SAMP>`-a -<VAR>column</VAR>'</SAMP> or
+<SAMP>`-m'</SAMP>, default truncation of text lines to 72 characters is used.
+Without <SAMP>`-w'</SAMP> and without any of the column options, no line
+truncation is used. That's equivalent to <SAMP>`-w 72 -j'</SAMP>.
+
+</DL>
+
+
+
+<H2><A NAME="SEC11" HREF="textutils.html#TOC11"><CODE>fold</CODE>: Wrap input lines to fit in specified width</A></H2>
+
+<P>
+<A NAME="IDX164"></A>
+<A NAME="IDX165"></A>
+<A NAME="IDX166"></A>
+
+</P>
+<P>
+<CODE>fold</CODE> writes each <VAR>file</VAR> (<SAMP>`-'</SAMP> means standard input), or
+standard input if none are given, to standard output, breaking long
+lines.  Synopsis:
+
+</P>
+
+<PRE>
+fold [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+By default, <CODE>fold</CODE> breaks lines wider than 80 columns. The output
+is split into as many lines as necessary.
+
+</P>
+<P>
+<A NAME="IDX167"></A>
+<CODE>fold</CODE> counts screen columns by default; thus, a tab may count more
+than one column, backspace decreases the column count, and carriage
+return sets the column to zero.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-b'</SAMP>
+<DD>
+<DT><SAMP>`--bytes'</SAMP>
+<DD>
+<A NAME="IDX168"></A>
+<A NAME="IDX169"></A>
+Count bytes rather than columns, so that tabs, backspaces, and carriage
+returns are each counted as taking up one column, just like other
+characters.
+
+<DT><SAMP>`-s'</SAMP>
+<DD>
+<DT><SAMP>`--spaces'</SAMP>
+<DD>
+<A NAME="IDX170"></A>
+<A NAME="IDX171"></A>
+Break at word boundaries: the line is broken after the last blank before
+the maximum line length.  If the line contains no such blanks, the line
+is broken at the maximum line length as usual.
+
+<DT><SAMP>`-w <VAR>width</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--width=<VAR>width</VAR>'</SAMP>
+<DD>
+<A NAME="IDX172"></A>
+<A NAME="IDX173"></A>
+Use a maximum line length of <VAR>width</VAR> columns instead of 80.
+
+</DL>
+
+
+
+<H1><A NAME="SEC12" HREF="textutils.html#TOC12">Output of parts of files</A></H1>
+
+<P>
+<A NAME="IDX174"></A>
+<A NAME="IDX175"></A>
+
+</P>
+<P>
+These commands output pieces of the input.
+
+</P>
+
+
+
+<H2><A NAME="SEC13" HREF="textutils.html#TOC13"><CODE>head</CODE>: Output the first part of files</A></H2>
+
+<P>
+<A NAME="IDX176"></A>
+<A NAME="IDX177"></A>
+<A NAME="IDX178"></A>
+
+</P>
+<P>
+<CODE>head</CODE> prints the first part (10 lines by default) of each
+<VAR>file</VAR>; it reads from standard input if no files are given or
+when given a <VAR>file</VAR> of <SAMP>`-'</SAMP>.  Synopses:
+
+</P>
+
+<PRE>
+head [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+head -<VAR>number</VAR> [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+If more than one <VAR>file</VAR> is specified, <CODE>head</CODE> prints a
+one-line header consisting of
+
+<PRE>
+==&#62; <VAR>file name</VAR> &#60;==
+</PRE>
+
+<P>
+before the output for each <VAR>file</VAR>.
+
+</P>
+<P>
+<CODE>head</CODE> accepts two option formats: the new one, in which numbers
+are arguments to the options (<SAMP>`-q -n 1'</SAMP>), and the old one, in which
+the number precedes any option letters (<SAMP>`-1q'</SAMP>).
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-<VAR>count</VAR><VAR>options</VAR>'</SAMP>
+<DD>
+<A NAME="IDX179"></A>
+This option is only recognized if it is specified first.  <VAR>count</VAR> is
+a decimal number optionally followed by a size letter (<SAMP>`b'</SAMP>,
+<SAMP>`k'</SAMP>, <SAMP>`m'</SAMP>) as in <CODE>-c</CODE>, or <SAMP>`l'</SAMP> to mean count by lines,
+or other option letters (<SAMP>`cqv'</SAMP>).
+
+<DT><SAMP>`-c <VAR>bytes</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--bytes=<VAR>bytes</VAR>'</SAMP>
+<DD>
+<A NAME="IDX180"></A>
+<A NAME="IDX181"></A>
+Print the first <VAR>bytes</VAR> bytes, instead of initial lines.  Appending
+<SAMP>`b'</SAMP> multiplies <VAR>bytes</VAR> by 512, <SAMP>`k'</SAMP> by 1024, and <SAMP>`m'</SAMP>
+by 1048576.
+
+<DT><SAMP>`-n <VAR>n</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--lines=<VAR>n</VAR>'</SAMP>
+<DD>
+<A NAME="IDX182"></A>
+<A NAME="IDX183"></A>
+Output the first <VAR>n</VAR> lines.
+
+<DT><SAMP>`-q'</SAMP>
+<DD>
+<DT><SAMP>`--quiet'</SAMP>
+<DD>
+<DT><SAMP>`--silent'</SAMP>
+<DD>
+<A NAME="IDX184"></A>
+<A NAME="IDX185"></A>
+<A NAME="IDX186"></A>
+Never print file name headers.
+
+<DT><SAMP>`-v'</SAMP>
+<DD>
+<DT><SAMP>`--verbose'</SAMP>
+<DD>
+<A NAME="IDX187"></A>
+<A NAME="IDX188"></A>
+Always print file name headers.
+
+</DL>
+
+
+
+<H2><A NAME="SEC14" HREF="textutils.html#TOC14"><CODE>tail</CODE>: Output the last part of files</A></H2>
+
+<P>
+<A NAME="IDX189"></A>
+<A NAME="IDX190"></A>
+
+</P>
+<P>
+<CODE>tail</CODE> prints the last part (10 lines by default) of each
+<VAR>file</VAR>; it reads from standard input if no files are given or
+when given a <VAR>file</VAR> of <SAMP>`-'</SAMP>.  Synopses:
+
+</P>
+
+<PRE>
+tail [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+tail -<VAR>number</VAR> [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+tail +<VAR>number</VAR> [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+If more than one <VAR>file</VAR> is specified, <CODE>tail</CODE> prints a
+one-line header consisting of
+
+<PRE>
+==&#62; <VAR>file name</VAR> &#60;==
+</PRE>
+
+<P>
+before the output for each <VAR>file</VAR>.
+
+</P>
+<P>
+<A NAME="IDX191"></A>
+GNU <CODE>tail</CODE> can output any amount of data (some other versions of
+<CODE>tail</CODE> cannot).  It also has no <SAMP>`-r'</SAMP> option (print in
+reverse), since reversing a file is really a different job from printing
+the end of a file; BSD <CODE>tail</CODE> (which is the one with <CODE>-r</CODE>) can
+only reverse files that are at most as large as its buffer, which is
+typically 32k.  A more reliable and versatile way to reverse files is
+the GNU <CODE>tac</CODE> command.
+
+</P>
+<P>
+<CODE>tail</CODE> accepts two option formats: the new one, in which numbers
+are arguments to the options (<SAMP>`-n 1'</SAMP>), and the old one, in which
+the number precedes any option letters (<SAMP>`-1'</SAMP> or <SAMP>`+1'</SAMP>).
+
+</P>
+<P>
+If any option-argument is a number <VAR>n</VAR> starting with a <SAMP>`+'</SAMP>,
+<CODE>tail</CODE> begins printing with the <VAR>n</VAR>th item from the start of
+each file, instead of from the end.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-<VAR>count</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`+<VAR>count</VAR>'</SAMP>
+<DD>
+<A NAME="IDX192"></A>
+<A NAME="IDX193"></A>
+This option is only recognized if it is specified first.  <VAR>count</VAR> is
+a decimal number optionally followed by a size letter (<SAMP>`b'</SAMP>,
+<SAMP>`k'</SAMP>, <SAMP>`m'</SAMP>) as in <CODE>-c</CODE>, or <SAMP>`l'</SAMP> to mean count by lines,
+or other option letters (<SAMP>`cfqv'</SAMP>).
+
+<DT><SAMP>`-c <VAR>bytes</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--bytes=<VAR>bytes</VAR>'</SAMP>
+<DD>
+<A NAME="IDX194"></A>
+<A NAME="IDX195"></A>
+Output the last <VAR>bytes</VAR> bytes, instead of final lines.  Appending
+<SAMP>`b'</SAMP> multiplies <VAR>bytes</VAR> by 512, <SAMP>`k'</SAMP> by 1024, and <SAMP>`m'</SAMP>
+by 1048576.
+
+<DT><SAMP>`-f'</SAMP>
+<DD>
+<DT><SAMP>`--follow'</SAMP>
+<DD>
+<A NAME="IDX196"></A>
+<A NAME="IDX197"></A>
+<A NAME="IDX198"></A>
+Loop forever trying to read more characters at the end of the file,
+presumably because the file is growing.  Ignored if reading from a pipe.
+If more than one file is given, <CODE>tail</CODE> prints a header whenever it
+gets output from a different file, to indicate which file that output is
+from.
+
+<DT><SAMP>`-n <VAR>n</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--lines=<VAR>n</VAR>'</SAMP>
+<DD>
+<A NAME="IDX199"></A>
+<A NAME="IDX200"></A>
+Output the last <VAR>n</VAR> lines.
+
+<DT><SAMP>`-q'</SAMP>
+<DD>
+<DT><SAMP>`-quiet'</SAMP>
+<DD>
+<DT><SAMP>`--silent'</SAMP>
+<DD>
+<A NAME="IDX201"></A>
+<A NAME="IDX202"></A>
+<A NAME="IDX203"></A>
+Never print file name headers.
+
+<DT><SAMP>`-v'</SAMP>
+<DD>
+<DT><SAMP>`--verbose'</SAMP>
+<DD>
+<A NAME="IDX204"></A>
+<A NAME="IDX205"></A>
+Always print file name headers.
+
+</DL>
+
+
+
+<H2><A NAME="SEC15" HREF="textutils.html#TOC15"><CODE>split</CODE>: Split a file into fixed-size pieces</A></H2>
+
+<P>
+<A NAME="IDX206"></A>
+<A NAME="IDX207"></A>
+<A NAME="IDX208"></A>
+
+</P>
+<P>
+<CODE>split</CODE> creates output files containing consecutive sections of
+<VAR>input</VAR> (standard input if none is given or <VAR>input</VAR> is
+<SAMP>`-'</SAMP>).  Synopsis:
+
+</P>
+
+<PRE>
+split [<VAR>option</VAR>] [<VAR>input</VAR> [<VAR>prefix</VAR>]]
+</PRE>
+
+<P>
+By default, <CODE>split</CODE> puts 1000 lines of <VAR>input</VAR> (or whatever is
+left over for the last section), into each output file.
+
+</P>
+<P>
+<A NAME="IDX209"></A>
+The output files' names consist of <VAR>prefix</VAR> (<SAMP>`x'</SAMP> by default)
+followed by a group of letters <SAMP>`aa'</SAMP>, <SAMP>`ab'</SAMP>, and so on, such
+that concatenating the output files in sorted order by file name produces
+the original input file.  (If more than 676 output files are required,
+<CODE>split</CODE> uses <SAMP>`zaa'</SAMP>, <SAMP>`zab'</SAMP>, etc.)
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-<VAR>lines</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`-l <VAR>lines</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--lines=<VAR>lines</VAR>'</SAMP>
+<DD>
+<A NAME="IDX210"></A>
+<A NAME="IDX211"></A>
+Put <VAR>lines</VAR> lines of <VAR>input</VAR> into each output file.
+
+<DT><SAMP>`-b <VAR>bytes</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--bytes=<VAR>bytes</VAR>'</SAMP>
+<DD>
+<A NAME="IDX212"></A>
+<A NAME="IDX213"></A>
+Put the first <VAR>bytes</VAR> bytes of <VAR>input</VAR> into each output file.
+Appending <SAMP>`b'</SAMP> multiplies <VAR>bytes</VAR> by 512, <SAMP>`k'</SAMP> by 1024, and
+<SAMP>`m'</SAMP> by 1048576.
+
+<DT><SAMP>`-C <VAR>bytes</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--line-bytes=<VAR>bytes</VAR>'</SAMP>
+<DD>
+<A NAME="IDX214"></A>
+<A NAME="IDX215"></A>
+Put into each output file as many complete lines of <VAR>input</VAR> as
+possible without exceeding <VAR>bytes</VAR> bytes.  For lines longer than
+<VAR>bytes</VAR> bytes, put <VAR>bytes</VAR> bytes into each output file until
+less than <VAR>bytes</VAR> bytes of the line are left, then continue
+normally.  <VAR>bytes</VAR> has the same format as for the <SAMP>`--bytes'</SAMP>
+option.
+
+<DT><SAMP>`--verbose'</SAMP>
+<DD>
+<A NAME="IDX216"></A>
+Write a diagnostic to standard error just before each output file is opened.
+
+</DL>
+
+
+
+<H2><A NAME="SEC16" HREF="textutils.html#TOC16"><CODE>csplit</CODE>: Split a file into context-determined pieces</A></H2>
+
+<P>
+<A NAME="IDX217"></A>
+<A NAME="IDX218"></A>
+<A NAME="IDX219"></A>
+
+</P>
+<P>
+<CODE>csplit</CODE> creates zero or more output files containing sections of
+<VAR>input</VAR> (standard input if <VAR>input</VAR> is <SAMP>`-'</SAMP>).  Synopsis:
+
+</P>
+
+<PRE>
+csplit [<VAR>option</VAR>]... <VAR>input</VAR> <VAR>pattern</VAR>...
+</PRE>
+
+<P>
+The contents of the output files are determined by the <VAR>pattern</VAR>
+arguments, as detailed below.  An error occurs if a <VAR>pattern</VAR>
+argument refers to a nonexistent line of the input file (e.g., if no
+remaining line matches a given regular expression).  After every
+<VAR>pattern</VAR> has been matched, any remaining input is copied into one
+last output file.
+
+</P>
+<P>
+By default, <CODE>csplit</CODE> prints the number of bytes written to each
+output file after it has been created.
+
+</P>
+<P>
+The types of pattern arguments are:
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`<VAR>n</VAR>'</SAMP>
+<DD>
+Create an output file containing the input up to but not including line
+<VAR>n</VAR> (a positive integer).  If followed by a repeat count, also
+create an output file containing the next <VAR>line</VAR> lines of the input
+file once for each repeat.
+
+<DT><SAMP>`/<VAR>regexp</VAR>/[<VAR>offset</VAR>]'</SAMP>
+<DD>
+Create an output file containing the current line up to (but not
+including) the next line of the input file that contains a match for
+<VAR>regexp</VAR>.  The optional <VAR>offset</VAR> is a <SAMP>`+'</SAMP> or <SAMP>`-'</SAMP>
+followed by a positive integer.  If it is given, the input up to the
+matching line plus or minus <VAR>offset</VAR> is put into the output file,
+and the line after that begins the next section of input.
+
+<DT><SAMP>`%<VAR>regexp</VAR>%[<VAR>offset</VAR>]'</SAMP>
+<DD>
+Like the previous type, except that it does not create an output
+file, so that section of the input file is effectively ignored.
+
+<DT><SAMP>`{<VAR>repeat-count</VAR>}'</SAMP>
+<DD>
+Repeat the previous pattern <VAR>repeat-count</VAR> additional
+times. <VAR>repeat-count</VAR> can either be a positive integer or an
+asterisk, meaning repeat as many times as necessary until the input is
+exhausted.
+
+</DL>
+
+<P>
+The output files' names consist of a prefix (<SAMP>`xx'</SAMP> by default)
+followed by a suffix.  By default, the suffix is an ascending sequence
+of two-digit decimal numbers from <SAMP>`00'</SAMP> and up to <SAMP>`99'</SAMP>.  In any
+case, concatenating the output files in sorted order by filename
+produces the original input file.
+
+</P>
+<P>
+By default, if <CODE>csplit</CODE> encounters an error or receives a hangup,
+interrupt, quit, or terminate signal, it removes any output files
+that it has created so far before it exits.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-f <VAR>prefix</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--prefix=<VAR>prefix</VAR>'</SAMP>
+<DD>
+<A NAME="IDX220"></A>
+<A NAME="IDX221"></A>
+<A NAME="IDX222"></A>
+Use <VAR>prefix</VAR> as the output file name prefix.
+
+<DT><SAMP>`-b <VAR>suffix</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--suffix=<VAR>suffix</VAR>'</SAMP>
+<DD>
+<A NAME="IDX223"></A>
+<A NAME="IDX224"></A>
+<A NAME="IDX225"></A>
+Use <VAR>suffix</VAR> as the output file name suffix.  When this option is
+specified, the suffix string must include exactly one
+<CODE>printf(3)</CODE>-style conversion specification, possibly including
+format specification flags, a field width, a precision specifications,
+or all of these kinds of modifiers.  The format letter must convert a
+binary integer argument to readable form; thus, only <SAMP>`d'</SAMP>, <SAMP>`i'</SAMP>,
+<SAMP>`u'</SAMP>, <SAMP>`o'</SAMP>, <SAMP>`x'</SAMP>, and <SAMP>`X'</SAMP> conversions are allowed.  The
+entire <VAR>suffix</VAR> is given (with the current output file number) to
+<CODE>sprintf(3)</CODE> to form the file name suffixes for each of the
+individual output files in turn.  If this option is used, the
+<SAMP>`--digits'</SAMP> option is ignored.
+
+<DT><SAMP>`-n <VAR>digits</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--digits=<VAR>digits</VAR>'</SAMP>
+<DD>
+<A NAME="IDX226"></A>
+<A NAME="IDX227"></A>
+Use output file names containing numbers that are <VAR>digits</VAR> digits
+long instead of the default 2.
+
+<DT><SAMP>`-k'</SAMP>
+<DD>
+<DT><SAMP>`--keep-files'</SAMP>
+<DD>
+<A NAME="IDX228"></A>
+<A NAME="IDX229"></A>
+Do not remove output files when errors are encountered.
+
+<DT><SAMP>`-z'</SAMP>
+<DD>
+<DT><SAMP>`--elide-empty-files'</SAMP>
+<DD>
+<A NAME="IDX230"></A>
+<A NAME="IDX231"></A>
+Suppress the generation of zero-length output files.  (In cases where
+the section delimiters of the input file are supposed to mark the first
+lines of each of the sections, the first output file will generally be a
+zero-length file unless you use this option.)  The output file sequence
+numbers always run consecutively starting from 0, even when this option
+is specified.
+
+<DT><SAMP>`-s'</SAMP>
+<DD>
+<DT><SAMP>`-q'</SAMP>
+<DD>
+<DT><SAMP>`--silent'</SAMP>
+<DD>
+<DT><SAMP>`--quiet'</SAMP>
+<DD>
+<A NAME="IDX232"></A>
+<A NAME="IDX233"></A>
+<A NAME="IDX234"></A>
+<A NAME="IDX235"></A>
+Do not print counts of output file sizes.
+
+</DL>
+
+
+
+<H1><A NAME="SEC17" HREF="textutils.html#TOC17">Summarizing files</A></H1>
+
+<P>
+<A NAME="IDX236"></A>
+
+</P>
+<P>
+These commands generate just a few numbers representing entire
+contents of files.
+
+</P>
+
+
+
+<H2><A NAME="SEC18" HREF="textutils.html#TOC18"><CODE>wc</CODE>: Print byte, word, and line counts</A></H2>
+
+<P>
+<A NAME="IDX237"></A>
+<A NAME="IDX238"></A>
+<A NAME="IDX239"></A>
+<A NAME="IDX240"></A>
+
+</P>
+<P>
+<CODE>wc</CODE> counts the number of bytes, whitespace-separated words, and
+newlines in each given <VAR>file</VAR>, or standard input if none are given
+or for a <VAR>file</VAR> of <SAMP>`-'</SAMP>.  Synopsis:
+
+</P>
+
+<PRE>
+wc [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+<A NAME="IDX241"></A>
+<CODE>wc</CODE> prints one line of counts for each file, and if the file was
+given as an argument, it prints the file name following the counts.  If
+more than one <VAR>file</VAR> is given, <CODE>wc</CODE> prints a final line
+containing the cumulative counts, with the file name <TT>`total'</TT>.  The
+counts are printed in this order: newlines, words, bytes.
+
+</P>
+<P>
+By default, <CODE>wc</CODE> prints all three counts.  Options can specify
+that only certain counts be printed.  Options do not undo others
+previously given, so
+
+</P>
+
+<PRE>
+wc --bytes --words
+</PRE>
+
+<P>
+prints both the byte counts and the word counts.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-c'</SAMP>
+<DD>
+<DT><SAMP>`--bytes'</SAMP>
+<DD>
+<DT><SAMP>`--chars'</SAMP>
+<DD>
+<A NAME="IDX242"></A>
+<A NAME="IDX243"></A>
+<A NAME="IDX244"></A>
+Print only the byte counts.
+
+<DT><SAMP>`-w'</SAMP>
+<DD>
+<DT><SAMP>`--words'</SAMP>
+<DD>
+<A NAME="IDX245"></A>
+<A NAME="IDX246"></A>
+Print only the word counts.
+
+<DT><SAMP>`-l'</SAMP>
+<DD>
+<DT><SAMP>`--lines'</SAMP>
+<DD>
+<A NAME="IDX247"></A>
+<A NAME="IDX248"></A>
+Print only the newline counts.
+
+</DL>
+
+
+
+<H2><A NAME="SEC19" HREF="textutils.html#TOC19"><CODE>sum</CODE>: Print checksum and block counts</A></H2>
+
+<P>
+<A NAME="IDX249"></A>
+<A NAME="IDX250"></A>
+<A NAME="IDX251"></A>
+
+</P>
+<P>
+<CODE>sum</CODE> computes a 16-bit checksum for each given <VAR>file</VAR>, or
+standard input if none are given or for a <VAR>file</VAR> of <SAMP>`-'</SAMP>.  Synopsis:
+
+</P>
+
+<PRE>
+sum [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+<CODE>sum</CODE> prints the checksum for each <VAR>file</VAR> followed by the
+number of blocks in the file (rounded up).  If more than one <VAR>file</VAR>
+is given, file names are also printed (by default).  (With the
+<SAMP>`--sysv'</SAMP> option, corresponding file name are printed when there is
+at least one file argument.)
+
+</P>
+<P>
+By default, GNU <CODE>sum</CODE> computes checksums using an algorithm
+compatible with BSD <CODE>sum</CODE> and prints file sizes in units of
+1024-byte blocks.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-r'</SAMP>
+<DD>
+<A NAME="IDX252"></A>
+<A NAME="IDX253"></A>
+Use the default (BSD compatible) algorithm.  This option is included for
+compatibility with the System V <CODE>sum</CODE>.  Unless <SAMP>`-s'</SAMP> was also
+given, it has no effect.
+
+<DT><SAMP>`-s'</SAMP>
+<DD>
+<DT><SAMP>`--sysv'</SAMP>
+<DD>
+<A NAME="IDX254"></A>
+<A NAME="IDX255"></A>
+<A NAME="IDX256"></A>
+Compute checksums using an algorithm compatible with System V
+<CODE>sum</CODE>'s default, and print file sizes in units of 512-byte blocks.
+
+</DL>
+
+<P>
+<CODE>sum</CODE> is provided for compatibility; the <CODE>cksum</CODE> program (see
+next section) is preferable in new applications.
+
+</P>
+
+
+
+<H2><A NAME="SEC20" HREF="textutils.html#TOC20"><CODE>cksum</CODE>: Print CRC checksum and byte counts</A></H2>
+
+<P>
+<A NAME="IDX257"></A>
+<A NAME="IDX258"></A>
+<A NAME="IDX259"></A>
+
+</P>
+<P>
+<CODE>cksum</CODE> computes a cyclic redundancy check (CRC) checksum for each
+given <VAR>file</VAR>, or standard input if none are given or for a
+<VAR>file</VAR> of <SAMP>`-'</SAMP>.  Synopsis:
+
+</P>
+
+<PRE>
+cksum [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+<CODE>cksum</CODE> prints the CRC checksum for each file along with the number
+of bytes in the file, and the filename unless no arguments were given.
+
+</P>
+<P>
+<CODE>cksum</CODE> is typically used to ensure that files
+transferred by unreliable means (e.g., netnews) have not been corrupted,
+by comparing the <CODE>cksum</CODE> output for the received files with the
+<CODE>cksum</CODE> output for the original files (typically given in the
+distribution).
+
+</P>
+<P>
+The CRC algorithm is specified by the POSIX.2 standard.  It is not
+compatible with the BSD or System V <CODE>sum</CODE> algorithms (see the
+previous section); it is more robust.
+
+</P>
+<P>
+The only options are <SAMP>`--help'</SAMP> and <SAMP>`--version'</SAMP>.  See section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+
+
+
+<H2><A NAME="SEC21" HREF="textutils.html#TOC21"><CODE>md5sum</CODE>: Print or check message-digests</A></H2>
+
+<P>
+<A NAME="IDX260"></A>
+<A NAME="IDX261"></A>
+<A NAME="IDX262"></A>
+<A NAME="IDX263"></A>
+<A NAME="IDX264"></A>
+
+</P>
+<P>
+<CODE>md5sum</CODE> computes a 128-bit checksum (or <EM>fingerprint</EM> or
+<EM>message-digest</EM>) for each specified <VAR>file</VAR>.
+If a <VAR>file</VAR> is specified as <SAMP>`-'</SAMP> or if no files are given
+<CODE>md5sum</CODE> computes the checksum for the standard input.
+<CODE>md5sum</CODE> can also determine whether a file and checksum are
+consistent. Synopsis:
+
+</P>
+
+<PRE>
+md5sum [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+md5sum [<VAR>option</VAR>]... --check [<VAR>file</VAR>]
+</PRE>
+
+<P>
+For each <VAR>file</VAR>, <SAMP>`md5sum'</SAMP> outputs the MD5 checksum, a flag
+indicating a binary or text input file, and the filename.
+If <VAR>file</VAR> is omitted or specified as <SAMP>`-'</SAMP>, standard input is read.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-b'</SAMP>
+<DD>
+<DT><SAMP>`--binary'</SAMP>
+<DD>
+<A NAME="IDX265"></A>
+<A NAME="IDX266"></A>
+<A NAME="IDX267"></A>
+Treat all input files as binary.  This option has no effect on Unix
+systems, since they don't distinguish between binary and text files.
+This option is useful on systems that have different internal and
+external character representations.
+
+<DT><SAMP>`-c'</SAMP>
+<DD>
+<DT><SAMP>`--check'</SAMP>
+<DD>
+Read filenames and checksum information from the single <VAR>file</VAR>
+(or from stdin if no <VAR>file</VAR> was specified) and report whether
+each named file and the corresponding checksum data are consistent.
+The input to this mode of <CODE>md5sum</CODE> is usually the output of
+a prior, checksum-generating run of <SAMP>`md5sum'</SAMP>.
+Each valid line of input consists of an MD5 checksum, a binary/text
+flag, and then a filename.
+Binary files are marked with <SAMP>`*'</SAMP>, text with <SAMP>` '</SAMP>.
+For each such line, <CODE>md5sum</CODE> reads the named file and computes its
+MD5 checksum.  Then, if the computed message digest does not match the
+one on the line with the filename, the file is noted as having
+failed the test.  Otherwise, the file passes the test.
+By default, for each valid line, one line is written to standard
+output indicating whether the named file passed the test.
+After all checks have been performed, if there were any failures,
+a warning is issued to standard error.
+Use the <SAMP>`--status'</SAMP> option to inhibit that output.
+If any listed file cannot be opened or read, if any valid line has
+an MD5 checksum inconsistent with the associated file, or if no valid
+line is found, <CODE>md5sum</CODE> exits with nonzero status.  Otherwise,
+it exits successfully.
+
+<DT><SAMP>`--status'</SAMP>
+<DD>
+<A NAME="IDX268"></A>
+<A NAME="IDX269"></A>
+This option is useful only when verifying checksums.
+When verifying checksums, don't generate the default one-line-per-file
+diagnostic and don't output the warning summarizing any failures.
+Failures to open or read a file still evoke individual diagnostics to
+standard error.
+If all listed files are readable and are consistent with the associated
+MD5 checksums, exit successfully.  Otherwise exit with a status code
+indicating there was a failure.
+
+<DT><SAMP>`-t'</SAMP>
+<DD>
+<DT><SAMP>`--text'</SAMP>
+<DD>
+<A NAME="IDX270"></A>
+<A NAME="IDX271"></A>
+<A NAME="IDX272"></A>
+Treat all input files as text files.  This is the reverse of
+<SAMP>`--binary'</SAMP>.
+
+<DT><SAMP>`-w'</SAMP>
+<DD>
+<DT><SAMP>`--warn'</SAMP>
+<DD>
+<A NAME="IDX273"></A>
+<A NAME="IDX274"></A>
+<A NAME="IDX275"></A>
+When verifying checksums, warn about improperly formated MD5 checksum lines.
+This option is useful only if all but a few lines in the checked input
+are valid.
+
+</DL>
+
+
+
+<H1><A NAME="SEC22" HREF="textutils.html#TOC22">Operating on sorted files</A></H1>
+
+<P>
+<A NAME="IDX276"></A>
+<A NAME="IDX277"></A>
+
+</P>
+<P>
+These commands work with (or produce) sorted files.
+
+</P>
+
+
+
+<H2><A NAME="SEC23" HREF="textutils.html#TOC23"><CODE>sort</CODE>: Sort text files</A></H2>
+
+<P>
+<A NAME="IDX278"></A>
+<A NAME="IDX279"></A>
+
+</P>
+<P>
+<CODE>sort</CODE> sorts, merges, or compares all the lines from the given
+files, or standard input if none are given or for a <VAR>file</VAR> of
+<SAMP>`-'</SAMP>.  By default, <CODE>sort</CODE> writes the results to standard
+output.  Synopsis:
+
+</P>
+
+<PRE>
+sort [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+<CODE>sort</CODE> has three modes of operation: sort (the default), merge,
+and check for sortedness.  The following options change the operation
+mode:
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-c'</SAMP>
+<DD>
+<A NAME="IDX280"></A>
+<A NAME="IDX281"></A>
+Check whether the given files are already sorted: if they are not all
+sorted, print an error message and exit with a status of 1.
+Otherwise, exit successfully.
+
+<DT><SAMP>`-m'</SAMP>
+<DD>
+<A NAME="IDX282"></A>
+<A NAME="IDX283"></A>
+Merge the given files by sorting them as a group.  Each input file must
+always be individually sorted.  It always works to sort instead of
+merge; merging is provided because it is faster, in the case where it
+works.
+
+</DL>
+
+<P>
+A pair of lines is compared as follows: if any key fields have been
+specified, <CODE>sort</CODE> compares each pair of fields, in the order
+specified on the command line, according to the associated ordering
+options, until a difference is found or no fields are left.
+
+</P>
+<P>
+If any of the global options <SAMP>`Mbdfinr'</SAMP> are given but no key fields
+are specified, <CODE>sort</CODE> compares the entire lines according to the
+global options.
+
+</P>
+<P>
+Finally, as a last resort when all keys compare equal (or if no
+ordering options were specified at all), <CODE>sort</CODE> compares the lines
+byte by byte in machine collating sequence.  The last resort comparison
+honors the <SAMP>`-r'</SAMP> global option.  The <SAMP>`-s'</SAMP> (stable) option
+disables this last-resort comparison so that lines in which all fields
+compare equal are left in their original relative order.  If no fields
+or global options are specified, <SAMP>`-s'</SAMP> has no effect.
+
+</P>
+<P>
+GNU <CODE>sort</CODE> (as specified for all GNU utilities) has no limits on
+input line length or restrictions on bytes allowed within lines.  In
+addition, if the final byte of an input file is not a newline, GNU
+<CODE>sort</CODE> silently supplies one.
+
+</P>
+<P>
+Upon any error, <CODE>sort</CODE> exits with a status of <SAMP>`2'</SAMP>.
+
+</P>
+<P>
+<A NAME="IDX284"></A>
+If the environment variable <CODE>TMPDIR</CODE> is set, <CODE>sort</CODE> uses its
+value as the directory for temporary files instead of <TT>`/tmp'</TT>.  The
+<SAMP>`-T <VAR>tempdir</VAR>'</SAMP> option in turn overrides the environment
+variable.
+
+</P>
+<P>
+The following options affect the ordering of output lines.  They may be
+specified globally or as part of a specific key field.  If no key
+fields are specified, global options apply to comparison of entire
+lines; otherwise the global options are inherited by key fields that do
+not specify any special options of their own.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-b'</SAMP>
+<DD>
+<A NAME="IDX285"></A>
+<A NAME="IDX286"></A>
+Ignore leading blanks when finding sort keys in each line.
+
+<DT><SAMP>`-d'</SAMP>
+<DD>
+<A NAME="IDX287"></A>
+<A NAME="IDX288"></A>
+<A NAME="IDX289"></A>
+Sort in <EM>phone directory</EM> order: ignore all characters except
+letters, digits and blanks when sorting.
+
+<DT><SAMP>`-f'</SAMP>
+<DD>
+<A NAME="IDX290"></A>
+<A NAME="IDX291"></A>
+Fold lowercase characters into the equivalent uppercase characters when
+sorting so that, for example, <SAMP>`b'</SAMP> and <SAMP>`B'</SAMP> sort as equal.
+
+<DT><SAMP>`-g'</SAMP>
+<DD>
+<A NAME="IDX292"></A>
+<A NAME="IDX293"></A>
+Sort numerically, but use strtod(3) to arrive at the numeric values.
+This allows floating point numbers to be specified in scientific notation,
+like <CODE>1.0e-34</CODE> and <CODE>10e100</CODE>.  Use this option only if there
+is no alternative;  it is much slower than <SAMP>`-n'</SAMP> and numbers with
+too many significant digits will be compared as if they had been
+truncated.  In addition, numbers outside the range of representable
+double precision floating point numbers are treated as if they were
+zeroes; overflow and underflow are not reported.
+
+<DT><SAMP>`-i'</SAMP>
+<DD>
+<A NAME="IDX294"></A>
+<A NAME="IDX295"></A>
+Ignore characters outside the printable ASCII range 040-0176 octal
+(inclusive) when sorting.
+
+<DT><SAMP>`-M'</SAMP>
+<DD>
+<A NAME="IDX296"></A>
+<A NAME="IDX297"></A>
+An initial string, consisting of any amount of whitespace, followed
+by three letters abbreviating a month name, is folded to UPPER case and
+compared in the order <SAMP>`JAN'</SAMP> &#60; <SAMP>`FEB'</SAMP> &#60; ... &#60; <SAMP>`DEC'</SAMP>.
+Invalid names compare low to valid names.
+
+<DT><SAMP>`-n'</SAMP>
+<DD>
+<A NAME="IDX298"></A>
+<A NAME="IDX299"></A>
+Sort numerically: the number begins each line; specifically, it consists
+of optional whitespace, an optional <SAMP>`-'</SAMP> sign, and zero or more
+digits, optionally followed by a decimal point and zero or more digits.
+
+<CODE>sort -n</CODE> uses what might be considered an unconventional method
+to compare strings representing floating point numbers.  Rather than
+first converting each string to the C <CODE>double</CODE> type and then
+comparing those values, sort aligns the decimal points in the two
+strings and compares the strings a character at a time.  One benefit
+of using this approach is its speed.  In practice this is much more
+efficient than performing the two corresponding string-to-double (or even
+string-to-integer) conversions and then comparing doubles.  In addition,
+there is no corresponding loss of precision.  Converting each string to
+<CODE>double</CODE> before comparison would limit precision to about 16 digits
+on most systems.
+
+Neither a leading <SAMP>`+'</SAMP> nor exponential notation is recognized.
+To compare such strings numerically, use the <SAMP>`-g'</SAMP> option.
+
+<DT><SAMP>`-r'</SAMP>
+<DD>
+<A NAME="IDX300"></A>
+<A NAME="IDX301"></A>
+Reverse the result of comparison, so that lines with greater key values
+appear earlier in the output instead of later.
+
+</DL>
+
+<P>
+Other options are:
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-o <VAR>output-file</VAR>'</SAMP>
+<DD>
+<A NAME="IDX302"></A>
+<A NAME="IDX303"></A>
+Write output to <VAR>output-file</VAR> instead of standard output.
+If <VAR>output-file</VAR> is one of the input files, <CODE>sort</CODE> copies
+it to a temporary file before sorting and writing the output to
+<VAR>output-file</VAR>.
+
+<DT><SAMP>`-t <VAR>separator</VAR>'</SAMP>
+<DD>
+<A NAME="IDX304"></A>
+<A NAME="IDX305"></A>
+Use character <VAR>separator</VAR> as the field separator when finding the
+sort keys in each line.  By default, fields are separated by the empty
+string between a non-whitespace character and a whitespace character.
+That is, given the input line <SAMP>` foo bar'</SAMP>, <CODE>sort</CODE> breaks it
+into fields <SAMP>` foo'</SAMP> and <SAMP>` bar'</SAMP>.  The field separator is
+not considered to be part of either the field preceding or the field
+following.
+
+<DT><SAMP>`-u'</SAMP>
+<DD>
+<A NAME="IDX306"></A>
+<A NAME="IDX307"></A>
+For the default case or the <SAMP>`-m'</SAMP> option, only output the first
+of a sequence of lines that compare equal.  For the <SAMP>`-c'</SAMP> option,
+check that no pair of consecutive lines compares equal.
+
+<DT><SAMP>`-k <VAR>pos1</VAR>[,<VAR>pos2</VAR>]'</SAMP>
+<DD>
+<A NAME="IDX308"></A>
+<A NAME="IDX309"></A>
+The recommended, POSIX, option for specifying a sort field.  The field
+consists of the line between <VAR>pos1</VAR> and <VAR>pos2</VAR> (or the end of
+the line, if <VAR>pos2</VAR> is omitted), inclusive.  Fields and character
+positions are numbered starting with 1.  See below.
+
+<DT><SAMP>`-z'</SAMP>
+<DD>
+<A NAME="IDX310"></A>
+<A NAME="IDX311"></A>
+Treat the input as a set of lines, each terminated by a zero byte (ASCII
+NUL (Null) character) instead of a ASCII LF (Line Feed.)
+This option can be useful in conjunction with <SAMP>`perl -0'</SAMP> or
+<SAMP>`find -print0'</SAMP> and <SAMP>`xargs -0'</SAMP> which do the same in order to
+reliably handle arbitrary pathnames (even those which contain Line Feed
+characters.)
+
+<DT><SAMP>`+<VAR>pos1</VAR>[-<VAR>pos2</VAR>]'</SAMP>
+<DD>
+The obsolete, traditional option for specifying a sort field.  The field
+consists of the line between <VAR>pos1</VAR> and up to but <EM>not including</EM>
+<VAR>pos2</VAR> (or the end of the line if <VAR>pos2</VAR> is omitted).  Fields
+and character positions are numbered starting with 0.  See below.
+
+</DL>
+
+<P>
+In addition, when GNU <CODE>sort</CODE> is invoked with exactly one argument,
+options <SAMP>`--help'</SAMP> and <SAMP>`--version'</SAMP> are recognized.  See section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<P>
+Historical (BSD and System V) implementations of <CODE>sort</CODE> have
+differed in their interpretation of some options, particularly
+<SAMP>`-b'</SAMP>, <SAMP>`-f'</SAMP>, and <SAMP>`-n'</SAMP>.  GNU sort follows the POSIX
+behavior, which is usually (but not always!) like the System V behavior.
+According to POSIX, <SAMP>`-n'</SAMP> no longer implies <SAMP>`-b'</SAMP>.  For
+consistency, <SAMP>`-M'</SAMP> has been changed in the same way.  This may
+affect the meaning of character positions in field specifications in
+obscure cases.  The only fix is to add an explicit <SAMP>`-b'</SAMP>.
+
+</P>
+<P>
+A position in a sort field specified with the <SAMP>`-k'</SAMP> or <SAMP>`+'</SAMP>
+option has the form <SAMP>`<VAR>f</VAR>.<VAR>c</VAR>'</SAMP>, where <VAR>f</VAR> is the number
+of the field to use and <VAR>c</VAR> is the number of the first character
+from the beginning of the field (for <SAMP>`+<VAR>pos</VAR>'</SAMP>) or from the end
+of the previous field (for <SAMP>`-<VAR>pos</VAR>'</SAMP>).  If the <SAMP>`.<VAR>c</VAR>'</SAMP>
+is omitted, it is taken to be the first character in the field.  If the
+<SAMP>`-b'</SAMP> option was specified, the <SAMP>`.<VAR>c</VAR>'</SAMP> part of a field
+specification is counted from the first nonblank character of the field
+(for <SAMP>`+<VAR>pos</VAR>'</SAMP>) or from the first nonblank character following
+the previous field (for <SAMP>`-<VAR>pos</VAR>'</SAMP>).
+
+</P>
+<P>
+A sort key option may also have any of the option letters <SAMP>`Mbdfinr'</SAMP>
+appended to it, in which case the global ordering options are not used
+for that particular field.  The <SAMP>`-b'</SAMP> option may be independently
+attached to either or both of the <SAMP>`+<VAR>pos</VAR>'</SAMP> and
+<SAMP>`-<VAR>pos</VAR>'</SAMP> parts of a field specification, and if it is inherited
+from the global options it will be attached to both.
+Keys may span multiple fields.
+
+</P>
+<P>
+Here are some examples to illustrate various combinations of options.
+In them, the POSIX <SAMP>`-k'</SAMP> option is used to specify sort keys rather
+than the obsolete <SAMP>`+<VAR>pos1</VAR>-<VAR>pos2</VAR>'</SAMP> syntax.
+
+</P>
+
+<UL>
+
+<LI>
+
+Sort in descending (reverse) numeric order.
+
+
+<PRE>
+sort -nr
+</PRE>
+
+Sort alphabetically, omitting the first and second fields.
+This uses a single key composed of the characters beginning
+at the start of field three and extending to the end of each line.
+
+
+<PRE>
+sort -k3
+</PRE>
+
+<LI>
+
+Sort numerically on the second field and resolve ties by sorting
+alphabetically on the third and fourth characters of field five.
+Use <SAMP>`:'</SAMP> as the field delimiter.
+
+
+<PRE>
+sort -t : -k 2,2n -k 5.3,5.4
+</PRE>
+
+Note that if you had written <SAMP>`-k 2'</SAMP> instead of <SAMP>`-k 2,2'</SAMP>
+<SAMP>`sort'</SAMP> would have used all characters beginning in the second field
+and extending to the end of the line as the primary <EM>numeric</EM>
+key.  For the large majority of applications, treating keys spanning
+more than one field as numeric will not do what you expect.
+
+Also note that the <SAMP>`n'</SAMP> modifier was applied to the field-end
+specifier for the first key.  It would have been equivalent to
+specify <SAMP>`-k 2n,2'</SAMP> or <SAMP>`-k 2n,2n'</SAMP>.  All modifiers except
+<SAMP>`b'</SAMP> apply to the associated <EM>field</EM>, regardless of whether
+the modifier character is attached to the field-start and/or the
+field-end part of the key specifier.
+
+<LI>
+
+Sort the password file on the fifth field and ignore any
+leading white space.  Sort lines with equal values in field five
+on the numeric user ID in field three.
+
+
+<PRE>
+sort -t : -k 5b,5 -k 3,3n /etc/passwd
+</PRE>
+
+An alternative is to use the global numeric modifier <SAMP>`-n'</SAMP>.
+
+
+<PRE>
+sort -t : -n -k 5b,5 -k 3,3 /etc/passwd
+</PRE>
+
+<LI>
+
+Generate a tags file in case insensitive sorted order.
+
+<PRE>
+find src -type f -print0 | sort -t / -z -f | xargs -0 etags --append
+</PRE>
+
+The use of <SAMP>`-print0'</SAMP>, <SAMP>`-z'</SAMP>, and <SAMP>`-0'</SAMP> in this case mean
+that pathnames that contain Line Feed characters will not get broken up
+by the sort operation.
+
+Finally, to ignore both leading and trailing white space, you
+could have applied the <SAMP>`b'</SAMP> modifier to the field-end specifier
+for the first key,
+
+
+<PRE>
+sort -t : -n -k 5b,5b -k 3,3 /etc/passwd
+</PRE>
+
+or by using the global <SAMP>`-b'</SAMP> modifier instead of <SAMP>`-n'</SAMP>
+and an explicit <SAMP>`n'</SAMP> with the second key specifier.
+
+
+<PRE>
+sort -t : -b -k 5,5 -k 3,3n /etc/passwd
+</PRE>
+
+</UL>
+
+
+
+<H2><A NAME="SEC24" HREF="textutils.html#TOC24"><CODE>uniq</CODE>: Uniqify files</A></H2>
+
+<P>
+<A NAME="IDX312"></A>
+<A NAME="IDX313"></A>
+
+</P>
+<P>
+<CODE>uniq</CODE> writes the unique lines in the given <TT>`input'</TT>, or
+standard input if nothing is given or for an <VAR>input</VAR> name of
+<SAMP>`-'</SAMP>.  Synopsis:
+
+</P>
+
+<PRE>
+uniq [<VAR>option</VAR>]... [<VAR>input</VAR> [<VAR>output</VAR>]]
+</PRE>
+
+<P>
+By default, <CODE>uniq</CODE> prints the unique lines in a sorted file, i.e.,
+discards all but one of identical successive lines.  Optionally, it can
+instead show only lines that appear exactly once, or lines that appear
+more than once.
+
+</P>
+<P>
+The input must be sorted.  If your input is not sorted, perhaps you want
+to use <CODE>sort -u</CODE>.
+
+</P>
+<P>
+If no <VAR>output</VAR> file is specified, <CODE>uniq</CODE> writes to standard
+output.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-<VAR>n</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`-f <VAR>n</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--skip-fields=<VAR>n</VAR>'</SAMP>
+<DD>
+<A NAME="IDX314"></A>
+<A NAME="IDX315"></A>
+<A NAME="IDX316"></A>
+Skip <VAR>n</VAR> fields on each line before checking for uniqueness.  Fields
+are sequences of non-space non-tab characters that are separated from
+each other by at least one spaces or tabs.
+
+<DT><SAMP>`+<VAR>n</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`-s <VAR>n</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--skip-chars=<VAR>n</VAR>'</SAMP>
+<DD>
+<A NAME="IDX317"></A>
+<A NAME="IDX318"></A>
+<A NAME="IDX319"></A>
+Skip <VAR>n</VAR> characters before checking for uniqueness.  If you use both
+the field and character skipping options, fields are skipped over first.
+
+<DT><SAMP>`-c'</SAMP>
+<DD>
+<DT><SAMP>`--count'</SAMP>
+<DD>
+<A NAME="IDX320"></A>
+<A NAME="IDX321"></A>
+Print the number of times each line occurred along with the line.
+
+<DT><SAMP>`-i'</SAMP>
+<DD>
+<DT><SAMP>`--ignore-case'</SAMP>
+<DD>
+<A NAME="IDX322"></A>
+<A NAME="IDX323"></A>
+Ignore differences in case when comparing lines.
+
+<DT><SAMP>`-d'</SAMP>
+<DD>
+<DT><SAMP>`--repeated'</SAMP>
+<DD>
+<A NAME="IDX324"></A>
+<A NAME="IDX325"></A>
+<A NAME="IDX326"></A>
+Print only duplicate lines.
+
+<DT><SAMP>`-u'</SAMP>
+<DD>
+<DT><SAMP>`--unique'</SAMP>
+<DD>
+<A NAME="IDX327"></A>
+<A NAME="IDX328"></A>
+<A NAME="IDX329"></A>
+Print only unique lines.
+
+<DT><SAMP>`-w <VAR>n</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--check-chars=<VAR>n</VAR>'</SAMP>
+<DD>
+<A NAME="IDX330"></A>
+<A NAME="IDX331"></A>
+Compare <VAR>n</VAR> characters on each line (after skipping any specified
+fields and characters).  By default the entire rest of the lines are
+compared.
+
+</DL>
+
+
+
+<H2><A NAME="SEC25" HREF="textutils.html#TOC25"><CODE>comm</CODE>: Compare two sorted files line by line</A></H2>
+
+<P>
+<A NAME="IDX332"></A>
+<A NAME="IDX333"></A>
+<A NAME="IDX334"></A>
+
+</P>
+<P>
+<CODE>comm</CODE> writes to standard output lines that are common, and lines
+that are unique, to two input files; a file name of <SAMP>`-'</SAMP> means
+standard input.  Synopsis:
+
+</P>
+
+<PRE>
+comm [<VAR>option</VAR>]... <VAR>file1</VAR> <VAR>file2</VAR>
+</PRE>
+
+<P>
+The input files must be sorted before <CODE>comm</CODE> can be used.
+
+</P>
+<P>
+<A NAME="IDX335"></A>
+<A NAME="IDX336"></A>
+With no options, <CODE>comm</CODE> produces three column output.  Column one
+contains lines unique to <VAR>file1</VAR>, column two contains lines unique
+to <VAR>file2</VAR>, and column three contains lines common to both files.
+Columns are separated by <KBD>TAB</KBD>.
+
+</P>
+<P>
+<A NAME="IDX337"></A>
+<A NAME="IDX338"></A>
+<A NAME="IDX339"></A>
+The options <SAMP>`-1'</SAMP>, <SAMP>`-2'</SAMP>, and <SAMP>`-3'</SAMP> suppress printing of
+the corresponding columns.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+
+
+
+<H1><A NAME="SEC26" HREF="textutils.html#TOC26">Operating on fields within a line</A></H1>
+
+
+
+<H2><A NAME="SEC27" HREF="textutils.html#TOC27"><CODE>cut</CODE>: Print selected parts of lines</A></H2>
+
+<P>
+<A NAME="IDX340"></A>
+<CODE>cut</CODE> writes to standard output selected parts of each line of each
+input file, or standard input if no files are given or for a file name of
+<SAMP>`-'</SAMP>.  Synopsis:
+
+</P>
+
+<PRE>
+cut [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+In the table which follows, the <VAR>byte-list</VAR>, <VAR>character-list</VAR>,
+and <VAR>field-list</VAR> are one or more numbers or ranges (two numbers
+separated by a dash) separated by commas.  Bytes, characters, and
+fields are numbered from starting at 1.  Incomplete ranges may be
+given: <SAMP>`-<VAR>m</VAR>'</SAMP> means <SAMP>`1-<VAR>m</VAR>'</SAMP>; <SAMP>`<VAR>n</VAR>-'</SAMP> means
+<SAMP>`<VAR>n</VAR>'</SAMP> through end of line or last field.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-b <VAR>byte-list</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--bytes=<VAR>byte-list</VAR>'</SAMP>
+<DD>
+<A NAME="IDX341"></A>
+<A NAME="IDX342"></A>
+Print only the bytes in positions listed in <VAR>byte-list</VAR>.  Tabs and
+backspaces are treated like any other character; they take up 1 byte.
+
+<DT><SAMP>`-c <VAR>character-list</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--characters=<VAR>character-list</VAR>'</SAMP>
+<DD>
+<A NAME="IDX343"></A>
+<A NAME="IDX344"></A>
+Print only characters in positions listed in <VAR>character-list</VAR>.
+The same as <SAMP>`-b'</SAMP> for now, but internationalization will change
+that.  Tabs and backspaces are treated like any other character; they
+take up 1 character.
+
+<DT><SAMP>`-f <VAR>field-list</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--fields=<VAR>field-list</VAR>'</SAMP>
+<DD>
+<A NAME="IDX345"></A>
+<A NAME="IDX346"></A>
+Print only the fields listed in <VAR>field-list</VAR>.  Fields are
+separated by a <KBD>TAB</KBD> by default.
+
+<DT><SAMP>`-d <VAR>delim</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--delimiter=<VAR>delim</VAR>'</SAMP>
+<DD>
+<A NAME="IDX347"></A>
+<A NAME="IDX348"></A>
+For <SAMP>`-f'</SAMP>, fields are separated by the first character in <VAR>delim</VAR>
+(default is <KBD>TAB</KBD>).
+
+<DT><SAMP>`-n'</SAMP>
+<DD>
+<A NAME="IDX349"></A>
+Do not split multi-byte characters (no-op for now).
+
+<DT><SAMP>`-s'</SAMP>
+<DD>
+<DT><SAMP>`--only-delimited'</SAMP>
+<DD>
+<A NAME="IDX350"></A>
+<A NAME="IDX351"></A>
+For <SAMP>`-f'</SAMP>, do not print lines that do not contain the field separator
+character.
+
+</DL>
+
+
+
+<H2><A NAME="SEC28" HREF="textutils.html#TOC28"><CODE>paste</CODE>: Merge lines of files</A></H2>
+
+<P>
+<A NAME="IDX352"></A>
+<A NAME="IDX353"></A>
+
+</P>
+<P>
+<CODE>paste</CODE> writes to standard output lines consisting of sequentially
+corresponding lines of each given file, separated by <KBD>TAB</KBD>.
+Standard input is used for a file name of <SAMP>`-'</SAMP> or if no input files
+are given.
+
+</P>
+<P>
+Synopsis:
+
+</P>
+
+<PRE>
+paste [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-s'</SAMP>
+<DD>
+<DT><SAMP>`--serial'</SAMP>
+<DD>
+<A NAME="IDX354"></A>
+<A NAME="IDX355"></A>
+Paste the lines of one file at a time rather than one line from each
+file.
+
+<DT><SAMP>`-d <VAR>delim-list</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`--delimiters <VAR>delim-list</VAR>'</SAMP>
+<DD>
+<A NAME="IDX356"></A>
+<A NAME="IDX357"></A>
+Consecutively use the characters in <VAR>delim-list</VAR> instead of
+<KBD>TAB</KBD> to separate merged lines.  When <VAR>delim-list</VAR> is
+exhausted, start again at its beginning.
+
+</DL>
+
+
+
+<H2><A NAME="SEC29" HREF="textutils.html#TOC29"><CODE>join</CODE>: Join lines on a common field</A></H2>
+
+<P>
+<A NAME="IDX358"></A>
+<A NAME="IDX359"></A>
+
+</P>
+<P>
+<CODE>join</CODE> writes to standard output a line for each pair of input
+lines that have identical join fields.  Synopsis:
+
+</P>
+
+<PRE>
+join [<VAR>option</VAR>]... <VAR>file1</VAR> <VAR>file2</VAR>
+</PRE>
+
+<P>
+Either <VAR>file1</VAR> or <VAR>file2</VAR> (but not both) can be <SAMP>`-'</SAMP>,
+meaning standard input.  <VAR>file1</VAR> and <VAR>file2</VAR> should be already
+sorted in increasing order (not numerically) on the join fields; unless
+the <SAMP>`-t'</SAMP> option is given, they should be sorted ignoring blanks at
+the start of the join field, as in <CODE>sort -b</CODE>.  If the
+<SAMP>`--ignore-case'</SAMP> option is given, lines should be sorted without
+regard to the case of characters in the join field, as in <CODE>sort -f</CODE>.
+
+</P>
+<P>
+The defaults are: the join field is the first field in each line;
+fields in the input are separated by one or more blanks, with leading
+blanks on the line ignored; fields in the output are separated by a
+space; each output line consists of the join field, the remaining
+fields from <VAR>file1</VAR>, then the remaining fields from <VAR>file2</VAR>.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-a <VAR>file-number</VAR>'</SAMP>
+<DD>
+<A NAME="IDX360"></A>
+Print a line for each unpairable line in file <VAR>file-number</VAR> (either
+<SAMP>`1'</SAMP> or <SAMP>`2'</SAMP>), in addition to the normal output.
+
+<DT><SAMP>`-e <VAR>string</VAR>'</SAMP>
+<DD>
+<A NAME="IDX361"></A>
+Replace those output fields that are missing in the input with
+<VAR>string</VAR>.
+
+<DT><SAMP>`-i'</SAMP>
+<DD>
+<DT><SAMP>`--ignore-case'</SAMP>
+<DD>
+<A NAME="IDX362"></A>
+<A NAME="IDX363"></A>
+Ignore differences in case when comparing keys.
+With this option, the lines of the input files must be ordered in the same way.
+Use <SAMP>`sort -f'</SAMP> to produce this ordering.
+
+<DT><SAMP>`-1 <VAR>field</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`-j1 <VAR>field</VAR>'</SAMP>
+<DD>
+<A NAME="IDX364"></A>
+<A NAME="IDX365"></A>
+Join on field <VAR>field</VAR> (a positive integer) of file 1.
+
+<DT><SAMP>`-2 <VAR>field</VAR>'</SAMP>
+<DD>
+<DT><SAMP>`-j2 <VAR>field</VAR>'</SAMP>
+<DD>
+<A NAME="IDX366"></A>
+<A NAME="IDX367"></A>
+Join on field <VAR>field</VAR> (a positive integer) of file 2.
+
+<DT><SAMP>`-j <VAR>field</VAR>'</SAMP>
+<DD>
+Equivalent to <SAMP>`-1 <VAR>field</VAR> -2 <VAR>field</VAR>'</SAMP>.
+
+<DT><SAMP>`-o <VAR>field-list</VAR>...'</SAMP>
+<DD>
+Construct each output line according to the format in <VAR>field-list</VAR>.
+Each element in <VAR>field-list</VAR> is either the single character <SAMP>`0'</SAMP> or
+has the form <VAR>m.n</VAR> where the file number, <VAR>m</VAR>, is <SAMP>`1'</SAMP> or
+<SAMP>`2'</SAMP> and <VAR>n</VAR> is a positive field number.
+
+A field specification of <SAMP>`0'</SAMP> denotes the join field.
+In most cases, the functionality of the <SAMP>`0'</SAMP> field spec
+may be reproduced using the explicit <VAR>m.n</VAR> that corresponds
+to the join field.  However, when printing unpairable lines
+(using either of the <SAMP>`-a'</SAMP> or <SAMP>`-v'</SAMP> options), there is no way
+to specify the join field using <VAR>m.n</VAR> in <VAR>field-list</VAR>
+if there are unpairable lines in both files.
+To give <CODE>join</CODE> that functionality, POSIX invented the <SAMP>`0'</SAMP>
+field specification notation.
+
+The elements in <VAR>field-list</VAR>
+are separated by commas or blanks.  Multiple <VAR>field-list</VAR>
+arguments can be given after a single <SAMP>`-o'</SAMP> option; the values
+of all lists given with <SAMP>`-o'</SAMP> are concatenated together.
+All output lines -- including those printed because of any -a or -v
+option -- are subject to the specified <VAR>field-list</VAR>.
+
+<DT><SAMP>`-t <VAR>char</VAR>'</SAMP>
+<DD>
+Use character <VAR>char</VAR> as the input and output field separator.
+
+<DT><SAMP>`-v <VAR>file-number</VAR>'</SAMP>
+<DD>
+Print a line for each unpairable line in file <VAR>file-number</VAR>
+(either <SAMP>`1'</SAMP> or <SAMP>`2'</SAMP>), instead of the normal output.
+
+</DL>
+
+<P>
+In addition, when GNU <CODE>join</CODE> is invoked with exactly one argument,
+options <SAMP>`--help'</SAMP> and <SAMP>`--version'</SAMP> are recognized.  See section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+
+
+
+<H1><A NAME="SEC30" HREF="textutils.html#TOC30">Operating on characters</A></H1>
+
+<P>
+<A NAME="IDX368"></A>
+
+</P>
+<P>
+This commands operate on individual characters.
+
+</P>
+
+
+
+<H2><A NAME="SEC31" HREF="textutils.html#TOC31"><CODE>tr</CODE>: Translate, squeeze, and/or delete characters</A></H2>
+
+<P>
+<A NAME="IDX369"></A>
+
+</P>
+<P>
+Synopsis:
+
+</P>
+
+<PRE>
+tr [<VAR>option</VAR>]... <VAR>set1</VAR> [<VAR>set2</VAR>]
+</PRE>
+
+<P>
+<CODE>tr</CODE> copies standard input to standard output, performing
+one of the following operations:
+
+</P>
+
+<UL>
+<LI>
+
+translate, and optionally squeeze repeated characters in the result,
+<LI>
+
+squeeze repeated characters,
+<LI>
+
+delete characters,
+<LI>
+
+delete characters, then squeeze repeated characters from the result.
+</UL>
+
+<P>
+The <VAR>set1</VAR> and (if given) <VAR>set2</VAR> arguments define ordered
+sets of characters, referred to below as <VAR>set1</VAR> and <VAR>set2</VAR>.  These
+sets are the characters of the input that <CODE>tr</CODE> operates on.
+The <SAMP>`--complement'</SAMP> (<SAMP>`-c'</SAMP>) option replaces <VAR>set1</VAR> with its
+complement (all of the characters that are not in <VAR>set1</VAR>).
+
+</P>
+
+
+
+<H3><A NAME="SEC32" HREF="textutils.html#TOC32">Specifying sets of characters</A></H3>
+
+<P>
+<A NAME="IDX370"></A>
+
+</P>
+<P>
+The format of the <VAR>set1</VAR> and <VAR>set2</VAR> arguments resembles
+the format of regular expressions; however, they are not regular
+expressions, only lists of characters.  Most characters simply
+represent themselves in these strings, but the strings can contain
+the shorthands listed below, for convenience.  Some of them can be
+used only in <VAR>set1</VAR> or <VAR>set2</VAR>, as noted below.
+
+</P>
+<DL COMPACT>
+
+<DT>Backslash escapes.
+<DD>
+<A NAME="IDX371"></A>
+
+A backslash followed by a character not listed below causes an error
+message.
+
+<DL COMPACT>
+
+<DT><SAMP>`\a'</SAMP>
+<DD>
+Control-G,
+<DT><SAMP>`\b'</SAMP>
+<DD>
+Control-H,
+<DT><SAMP>`\f'</SAMP>
+<DD>
+Control-L,
+<DT><SAMP>`\n'</SAMP>
+<DD>
+Control-J,
+<DT><SAMP>`\r'</SAMP>
+<DD>
+Control-M,
+<DT><SAMP>`\t'</SAMP>
+<DD>
+Control-I,
+<DT><SAMP>`\v'</SAMP>
+<DD>
+Control-K,
+<DT><SAMP>`\<VAR>ooo</VAR>'</SAMP>
+<DD>
+The character with the value given by <VAR>ooo</VAR>, which is 1 to 3
+octal digits,
+<DT><SAMP>`\\'</SAMP>
+<DD>
+A backslash.
+</DL>
+
+<DT>Ranges.
+<DD>
+<A NAME="IDX372"></A>
+
+The notation <SAMP>`<VAR>m</VAR>-<VAR>n</VAR>'</SAMP> expands to all of the characters
+from <VAR>m</VAR> through <VAR>n</VAR>, in ascending order.  <VAR>m</VAR> should
+collate before <VAR>n</VAR>; if it doesn't, an error results.  As an example,
+<SAMP>`0-9'</SAMP> is the same as <SAMP>`0123456789'</SAMP>.  Although GNU <CODE>tr</CODE>
+does not support the System V syntax that uses square brackets to
+enclose ranges, translations specified in that format will still work as
+long as the brackets in <VAR>string1</VAR> correspond to identical brackets
+in <VAR>string2</VAR>.
+
+<DT>Repeated characters.
+<DD>
+<A NAME="IDX373"></A>
+
+The notation <SAMP>`[<VAR>c</VAR>*<VAR>n</VAR>]'</SAMP> in <VAR>set2</VAR> expands to <VAR>n</VAR>
+copies of character <VAR>c</VAR>.  Thus, <SAMP>`[y*6]'</SAMP> is the same as
+<SAMP>`yyyyyy'</SAMP>.  The notation <SAMP>`[<VAR>c</VAR>*]'</SAMP> in <VAR>string2</VAR> expands
+to as many copies of <VAR>c</VAR> as are needed to make <VAR>set2</VAR> as long as
+<VAR>set1</VAR>.  If <VAR>n</VAR> begins with <SAMP>`0'</SAMP>, it is interpreted in
+octal, otherwise in decimal.
+
+<DT>Character classes.
+<DD>
+<A NAME="IDX374"></A>
+
+The notation <SAMP>`[:<VAR>class</VAR>:]'</SAMP> expands to all of the characters in
+the (predefined) class <VAR>class</VAR>.  The characters expand in no
+particular order, except for the <CODE>upper</CODE> and <CODE>lower</CODE> classes,
+which expand in ascending order.  When the <SAMP>`--delete'</SAMP> (<SAMP>`-d'</SAMP>)
+and <SAMP>`--squeeze-repeats'</SAMP> (<SAMP>`-s'</SAMP>) options are both given, any
+character class can be used in <VAR>set2</VAR>.  Otherwise, only the
+character classes <CODE>lower</CODE> and <CODE>upper</CODE> are accepted in
+<VAR>set2</VAR>, and then only if the corresponding character class
+(<CODE>upper</CODE> and <CODE>lower</CODE>, respectively) is specified in the same
+relative position in <VAR>set1</VAR>.  Doing this specifies case conversion.
+The class names are given below; an error results when an invalid class
+name is given.
+
+<DL COMPACT>
+
+<DT><CODE>alnum</CODE>
+<DD>
+<A NAME="IDX375"></A>
+Letters and digits.
+<DT><CODE>alpha</CODE>
+<DD>
+<A NAME="IDX376"></A>
+Letters.
+<DT><CODE>blank</CODE>
+<DD>
+<A NAME="IDX377"></A>
+Horizontal whitespace.
+<DT><CODE>cntrl</CODE>
+<DD>
+<A NAME="IDX378"></A>
+Control characters.
+<DT><CODE>digit</CODE>
+<DD>
+<A NAME="IDX379"></A>
+Digits.
+<DT><CODE>graph</CODE>
+<DD>
+<A NAME="IDX380"></A>
+Printable characters, not including space.
+<DT><CODE>lower</CODE>
+<DD>
+<A NAME="IDX381"></A>
+Lowercase letters.
+<DT><CODE>print</CODE>
+<DD>
+<A NAME="IDX382"></A>
+Printable characters, including space.
+<DT><CODE>punct</CODE>
+<DD>
+<A NAME="IDX383"></A>
+Punctuation characters.
+<DT><CODE>space</CODE>
+<DD>
+<A NAME="IDX384"></A>
+Horizontal or vertical whitespace.
+<DT><CODE>upper</CODE>
+<DD>
+<A NAME="IDX385"></A>
+Uppercase letters.
+<DT><CODE>xdigit</CODE>
+<DD>
+<A NAME="IDX386"></A>
+Hexadecimal digits.
+</DL>
+
+<DT>Equivalence classes.
+<DD>
+<A NAME="IDX387"></A>
+
+The syntax <SAMP>`[=<VAR>c</VAR>=]'</SAMP> expands to all of the characters that are
+equivalent to <VAR>c</VAR>, in no particular order.  Equivalence classes are
+a relatively recent invention intended to support non-English alphabets.
+But there seems to be no standard way to define them or determine their
+contents.  Therefore, they are not fully implemented in GNU <CODE>tr</CODE>;
+each character's equivalence class consists only of that character,
+which is of no particular use.
+
+</DL>
+
+
+
+<H3><A NAME="SEC33" HREF="textutils.html#TOC33">Translating</A></H3>
+
+<P>
+<A NAME="IDX388"></A>
+
+</P>
+<P>
+<CODE>tr</CODE> performs translation when <VAR>set1</VAR> and <VAR>set2</VAR> are
+both given and the <SAMP>`--delete'</SAMP> (<SAMP>`-d'</SAMP>) option is not given.
+<CODE>tr</CODE> translates each character of its input that is in <VAR>set1</VAR>
+to the corresponding character in <VAR>set2</VAR>.  Characters not in
+<VAR>set1</VAR> are passed through unchanged.  When a character appears more
+than once in <VAR>set1</VAR> and the corresponding characters in <VAR>set2</VAR>
+are not all the same, only the final one is used.  For example, these
+two commands are equivalent:
+
+</P>
+
+<PRE>
+tr aaa xyz
+tr a z
+</PRE>
+
+<P>
+A common use of <CODE>tr</CODE> is to convert lowercase characters to
+uppercase.  This can be done in many ways.  Here are three of them:
+
+</P>
+
+<PRE>
+tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+tr a-z A-Z
+tr '[:lower:]' '[:upper:]'
+</PRE>
+
+<P>
+When <CODE>tr</CODE> is performing translation, <VAR>set1</VAR> and <VAR>set2</VAR>
+typically have the same length.  If <VAR>set1</VAR> is shorter than
+<VAR>set2</VAR>, the extra characters at the end of <VAR>set2</VAR> are ignored.
+
+</P>
+<P>
+On the other hand, making <VAR>set1</VAR> longer than <VAR>set2</VAR> is not
+portable; POSIX.2 says that the result is undefined.  In this situation,
+BSD <CODE>tr</CODE> pads <VAR>set2</VAR> to the length of <VAR>set1</VAR> by repeating
+the last character of <VAR>set2</VAR> as many times as necessary.  System V
+<CODE>tr</CODE> truncates <VAR>set1</VAR> to the length of <VAR>set2</VAR>.
+
+</P>
+<P>
+By default, GNU <CODE>tr</CODE> handles this case like BSD <CODE>tr</CODE>.  When
+the <SAMP>`--truncate-set1'</SAMP> (<SAMP>`-t'</SAMP>) option is given, GNU <CODE>tr</CODE>
+handles this case like the System V <CODE>tr</CODE> instead.  This option is
+ignored for operations other than translation.
+
+</P>
+<P>
+Acting like System V <CODE>tr</CODE> in this case breaks the relatively common
+BSD idiom:
+
+</P>
+
+<PRE>
+tr -cs A-Za-z0-9 '\012'
+</PRE>
+
+<P>
+because it converts only zero bytes (the first element in the
+complement of <VAR>set1</VAR>), rather than all non-alphanumerics, to
+newlines.
+
+</P>
+
+
+
+<H3><A NAME="SEC34" HREF="textutils.html#TOC34">Squeezing repeats and deleting</A></H3>
+
+<P>
+<A NAME="IDX389"></A>
+<A NAME="IDX390"></A>
+
+</P>
+<P>
+When given just the <SAMP>`--delete'</SAMP> (<SAMP>`-d'</SAMP>) option, <CODE>tr</CODE>
+removes any input characters that are in <VAR>set1</VAR>.
+
+</P>
+<P>
+When given just the <SAMP>`--squeeze-repeats'</SAMP> (<SAMP>`-s'</SAMP>) option,
+<CODE>tr</CODE> replaces each input sequence of a repeated character that
+is in <VAR>set1</VAR> with a single occurrence of that character.
+
+</P>
+<P>
+When given both <SAMP>`--delete'</SAMP> and <SAMP>`--squeeze-repeats'</SAMP>, <CODE>tr</CODE>
+first performs any deletions using <VAR>set1</VAR>, then squeezes repeats
+from any remaining characters using <VAR>set2</VAR>.
+
+</P>
+<P>
+The <SAMP>`--squeeze-repeats'</SAMP> option may also be used when translating,
+in which case <CODE>tr</CODE> first performs translation, then squeezes
+repeats from any remaining characters using <VAR>set2</VAR>.
+
+</P>
+<P>
+Here are some examples to illustrate various combinations of options:
+
+</P>
+
+<UL>
+
+<LI>
+
+Remove all zero bytes:
+
+
+<PRE>
+tr -d '\000'
+</PRE>
+
+<LI>
+
+Put all words on lines by themselves.  This converts all
+non-alphanumeric characters to newlines, then squeezes each string
+of repeated newlines into a single newline:
+
+
+<PRE>
+tr -cs '[a-zA-Z0-9]' '[\n*]'
+</PRE>
+
+<LI>
+
+Convert each sequence of repeated newlines to a single newline:
+
+
+<PRE>
+tr -s '\n'
+</PRE>
+
+</UL>
+
+
+
+<H3><A NAME="SEC35" HREF="textutils.html#TOC35">Warning messages</A></H3>
+
+<P>
+<A NAME="IDX391"></A>
+Setting the environment variable <CODE>POSIXLY_CORRECT</CODE> turns off the
+following warning and error messages, for strict compliance with
+POSIX.2.  Otherwise, the following diagnostics are issued:
+
+</P>
+
+<OL>
+
+<LI>
+
+When the <SAMP>`--delete'</SAMP> option is given but <SAMP>`--squeeze-repeats'</SAMP>
+is not, and <VAR>set2</VAR> is given, GNU <CODE>tr</CODE> by default prints
+a usage message and exits, because <VAR>set2</VAR> would not be used.
+The POSIX specification says that <VAR>set2</VAR> must be ignored in
+this case. Silently ignoring arguments is a bad idea.
+
+<LI>
+
+When an ambiguous octal escape is given.  For example, <SAMP>`\400'</SAMP>
+is actually <SAMP>`\40'</SAMP> followed by the digit <SAMP>`0'</SAMP>, because the
+value 400 octal does not fit into a single byte.
+
+</OL>
+
+<P>
+GNU <CODE>tr</CODE> does not provide complete BSD or System V compatibility.
+For example, it is impossible to disable interpretation of the POSIX
+constructs <SAMP>`[:alpha:]'</SAMP>, <SAMP>`[=c=]'</SAMP>, and <SAMP>`[c*10]'</SAMP>.  Also, GNU
+<CODE>tr</CODE> does not delete zero bytes automatically, unlike traditional
+Unix versions, which provide no way to preserve zero bytes.
+
+</P>
+
+
+
+<H2><A NAME="SEC36" HREF="textutils.html#TOC36"><CODE>expand</CODE>: Convert tabs to spaces</A></H2>
+
+<P>
+<A NAME="IDX392"></A>
+<A NAME="IDX393"></A>
+<A NAME="IDX394"></A>
+
+</P>
+<P>
+<CODE>expand</CODE> writes the contents of each given <VAR>file</VAR>, or standard
+input if none are given or for a <VAR>file</VAR> of <SAMP>`-'</SAMP>, to standard
+output, with tab characters converted to the appropriate number of
+spaces.  Synopsis:
+
+</P>
+
+<PRE>
+expand [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+By default, <CODE>expand</CODE> converts all tabs to spaces.  It preserves
+backspace characters in the output; they decrement the column count for
+tab calculations.  The default action is equivalent to <SAMP>`-8'</SAMP> (set
+tabs every 8 columns).
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-<VAR>tab1</VAR>[,<VAR>tab2</VAR>]...'</SAMP>
+<DD>
+<DT><SAMP>`-t <VAR>tab1</VAR>[,<VAR>tab2</VAR>]...'</SAMP>
+<DD>
+<DT><SAMP>`--tabs=<VAR>tab1</VAR>[,<VAR>tab2</VAR>]...'</SAMP>
+<DD>
+<A NAME="IDX395"></A>
+<A NAME="IDX396"></A>
+<A NAME="IDX397"></A>
+<A NAME="IDX398"></A>
+If only one tab stop is given, set the tabs <VAR>tab1</VAR> spaces apart
+(default is 8).  Otherwise, set the tabs at columns <VAR>tab1</VAR>,
+<VAR>tab2</VAR>, ... (numbered from 0), and replace any tabs beyond the
+last tabstop given with single spaces.  If the tabstops are specified
+with the <SAMP>`-t'</SAMP> or <SAMP>`--tabs'</SAMP> option, they can be separated by
+blanks as well as by commas.
+
+<DT><SAMP>`-i'</SAMP>
+<DD>
+<DT><SAMP>`--initial'</SAMP>
+<DD>
+<A NAME="IDX399"></A>
+<A NAME="IDX400"></A>
+<A NAME="IDX401"></A>
+Only convert initial tabs (those that precede all non-space or non-tab
+characters) on each line to spaces.
+
+</DL>
+
+
+
+<H2><A NAME="SEC37" HREF="textutils.html#TOC37"><CODE>unexpand</CODE>: Convert spaces to tabs</A></H2>
+
+<P>
+<A NAME="IDX402"></A>
+
+</P>
+<P>
+<CODE>unexpand</CODE> writes the contents of each given <VAR>file</VAR>, or
+standard input if none are given or for a <VAR>file</VAR> of <SAMP>`-'</SAMP>, to
+standard output, with strings of two or more space or tab characters
+converted to as many tabs as possible followed by as many spaces as are
+needed.  Synopsis:
+
+</P>
+
+<PRE>
+unexpand [<VAR>option</VAR>]... [<VAR>file</VAR>]...
+</PRE>
+
+<P>
+By default, <CODE>unexpand</CODE> converts only initial spaces and tabs (those
+that precede all non space or tab characters) on each line.  It
+preserves backspace characters in the output; they decrement the column
+count for tab calculations.  By default, tabs are set at every 8th
+column.
+
+</P>
+<P>
+The program accepts the following options.  Also see section <A HREF="textutils.html#SEC2">Common options</A>.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-<VAR>tab1</VAR>[,<VAR>tab2</VAR>]...'</SAMP>
+<DD>
+<DT><SAMP>`-t <VAR>tab1</VAR>[,<VAR>tab2</VAR>]...'</SAMP>
+<DD>
+<DT><SAMP>`--tabs=<VAR>tab1</VAR>[,<VAR>tab2</VAR>]...'</SAMP>
+<DD>
+<A NAME="IDX403"></A>
+<A NAME="IDX404"></A>
+<A NAME="IDX405"></A>
+If only one tab stop is given, set the tabs <VAR>tab1</VAR> spaces apart
+instead of the default 8.  Otherwise, set the tabs at columns
+<VAR>tab1</VAR>, <VAR>tab2</VAR>, ... (numbered from 0), and leave spaces and
+tabs beyond the tabstops given unchanged.  If the tabstops are specified
+with the <SAMP>`-t'</SAMP> or <SAMP>`--tabs'</SAMP> option, they can be separated by
+blanks as well as by commas.  This option implies the <SAMP>`-a'</SAMP> option.
+
+<DT><SAMP>`-a'</SAMP>
+<DD>
+<DT><SAMP>`--all'</SAMP>
+<DD>
+<A NAME="IDX406"></A>
+<A NAME="IDX407"></A>
+Convert all strings of two or more spaces or tabs, not just initial
+ones, to tabs.
+
+</DL>
+
+
+
+<H1><A NAME="SEC38" HREF="textutils.html#TOC38">Opening the software toolbox</A></H1>
+
+<P>
+This chapter originally appeared in <CITE>Linux Journal</CITE>, volume 1,
+number 2, in the <CITE>What's GNU?</CITE> column. It was written by Arnold
+Robbins.
+
+</P>
+
+
+
+<H2><A NAME="SEC39" HREF="textutils.html#TOC39">Toolbox introduction</A></H2>
+
+<P>
+This month's column is only peripherally related to the GNU Project, in
+that it describes a number of the GNU tools on your Linux system and how they
+might be used.  What it's really about is the "Software Tools" philosophy
+of program development and usage.
+
+</P>
+<P>
+The software tools philosophy was an important and integral concept
+in the initial design and development of Unix (of which Linux and GNU are
+essentially clones).  Unfortunately, in the modern day press of
+Internetworking and flashy GUIs, it seems to have fallen by the
+wayside.  This is a shame, since it provides a powerful mental model
+for solving many kinds of problems.
+
+</P>
+<P>
+Many people carry a Swiss Army knife around in their pants pockets (or
+purse).  A Swiss Army knife is a handy tool to have: it has several knife
+blades, a screwdriver, tweezers, toothpick, nail file, corkscrew, and perhaps
+a number of other things on it.  For the everyday, small miscellaneous jobs
+where you need a simple, general purpose tool, it's just the thing.
+
+</P>
+<P>
+On the other hand, an experienced carpenter doesn't build a house using
+a Swiss Army knife.  Instead, he has a toolbox chock full of specialized
+tools--a saw, a hammer, a screwdriver, a plane, and so on.  And he knows
+exactly when and where to use each tool; you won't catch him hammering nails
+with the handle of his screwdriver.
+
+</P>
+<P>
+The Unix developers at Bell Labs were all professional programmers and trained
+computer scientists.  They had found that while a one-size-fits-all program
+might appeal to a user because there's only one program to use, in practice
+such programs are
+
+</P>
+
+<OL>
+<LI>
+
+difficult to write,
+
+<LI>
+
+difficult to maintain and
+debug, and
+
+<LI>
+
+difficult to extend to meet new situations.
+</OL>
+
+<P>
+Instead, they felt that programs should be specialized tools.  In short, each
+program "should do one thing well."  No more and no less.  Such programs are
+simpler to design, write, and get right--they only do one thing.
+
+</P>
+<P>
+Furthermore, they found that with the right machinery for hooking programs
+together, that the whole was greater than the sum of the parts.  By combining
+several special purpose programs, you could accomplish a specific task
+that none of the programs was designed for, and accomplish it much more
+quickly and easily than if you had to write a special purpose program.
+We will see some (classic) examples of this further on in the column.
+(An important additional point was that, if necessary, take a detour
+and build any software tools you may need first, if you don't already
+have something appropriate in the toolbox.)
+
+</P>
+
+
+<H2><A NAME="SEC40" HREF="textutils.html#TOC40">I/O redirection</A></H2>
+
+<P>
+Hopefully, you are familiar with the basics of I/O redirection in the
+shell, in particular the concepts of "standard input," "standard output,"
+and "standard error".  Briefly, "standard input" is a data source, where
+data comes from.  A program should not need to either know or care if the
+data source is a disk file, a keyboard, a magnetic tape, or even a punched
+card reader.  Similarly, "standard output" is a data sink, where data goes
+to.  The program should neither know nor care where this might be.
+Programs that only read their standard input, do something to the data,
+and then send it on, are called "filters", by analogy to filters in a
+water pipeline.
+
+</P>
+<P>
+With the Unix shell, it's very easy to set up data pipelines:
+
+</P>
+
+<PRE>
+program_to_create_data | filter1 | .... | filterN &#62; final.pretty.data
+</PRE>
+
+<P>
+We start out by creating the raw data; each filter applies some successive
+transformation to the data, until by the time it comes out of the pipeline,
+it is in the desired form.
+
+</P>
+<P>
+This is fine and good for standard input and standard output.  Where does the
+standard error come in to play?  Well, think about <CODE>filter1</CODE> in
+the pipeline above.  What happens if it encounters an error in the data it
+sees?  If it writes an error message to standard output, it will just
+disappear down the pipeline into <CODE>filter2</CODE>'s input, and the
+user will probably never see it.  So programs need a place where they can send
+error messages so that the user will notice them.  This is standard error,
+and it is usually connected to your console or window, even if you have
+redirected standard output of your program away from your screen.
+
+</P>
+<P>
+For filter programs to work together, the format of the data has to be
+agreed upon.  The most straightforward and easiest format to use is simply
+lines of text.  Unix data files are generally just streams of bytes, with
+lines delimited by the ASCII LF (Line Feed) character,
+conventionally called a "newline" in the Unix literature. (This is
+<CODE>'\n'</CODE> if you're a C programmer.)  This is the format used by all
+the traditional filtering programs.  (Many earlier operating systems
+had elaborate facilities and special purpose programs for managing
+binary data.  Unix has always shied away from such things, under the
+philosophy that it's easiest to simply be able to view and edit your
+data with a text editor.)
+
+</P>
+<P>
+OK, enough introduction. Let's take a look at some of the tools, and then
+we'll see how to hook them together in interesting ways.   In the following
+discussion, we will only present those command line options that interest
+us.  As you should always do, double check your system documentation
+for the full story.
+
+</P>
+
+
+<H2><A NAME="SEC41" HREF="textutils.html#TOC41">The <CODE>who</CODE> command</A></H2>
+
+<P>
+The first program is the <CODE>who</CODE> command.  By itself, it generates a
+list of the users who are currently logged in.  Although I'm writing
+this on a single-user system, we'll pretend that several people are
+logged in:
+
+</P>
+
+<PRE>
+$ who
+arnold   console Jan 22 19:57
+miriam   ttyp0   Jan 23 14:19(:0.0)
+bill     ttyp1   Jan 21 09:32(:0.0)
+arnold   ttyp2   Jan 23 20:48(:0.0)
+</PRE>
+
+<P>
+Here, the <SAMP>`$'</SAMP> is the usual shell prompt, at which I typed <CODE>who</CODE>.
+There are three people logged in, and I am logged in twice.  On traditional
+Unix systems, user names are never more than eight characters long.  This
+little bit of trivia will be useful later.  The output of <CODE>who</CODE> is nice,
+but the data is not all that exciting.
+
+</P>
+
+
+<H2><A NAME="SEC42" HREF="textutils.html#TOC42">The <CODE>cut</CODE> command</A></H2>
+
+<P>
+The next program we'll look at is the <CODE>cut</CODE> command.  This program
+cuts out columns or fields of input data.  For example, we can tell it
+to print just the login name and full name from the <TT>`/etc/passwd
+file'</TT>.  The <TT>`/etc/passwd'</TT> file has seven fields, separated by
+colons:
+
+</P>
+
+<PRE>
+arnold:xyzzy:2076:10:Arnold D. Robbins:/home/arnold:/bin/ksh
+</PRE>
+
+<P>
+To get the first and fifth fields, we would use cut like this:
+
+</P>
+
+<PRE>
+$ cut -d: -f1,5 /etc/passwd
+root:Operator
+...
+arnold:Arnold D. Robbins
+miriam:Miriam A. Robbins
+...
+</PRE>
+
+<P>
+With the <SAMP>`-c'</SAMP> option, <CODE>cut</CODE> will cut out specific characters
+(i.e., columns) in the input lines.  This command looks like it might be
+useful for data filtering.
+
+</P>
+
+
+
+<H2><A NAME="SEC43" HREF="textutils.html#TOC43">The <CODE>sort</CODE> command</A></H2>
+
+<P>
+Next we'll look at the <CODE>sort</CODE> command.  This is one of the most
+powerful commands on a Unix-style system; one that you will often find
+yourself using when setting up fancy data plumbing. The <CODE>sort</CODE>
+command reads and sorts each file named on the command line.  It then
+merges the sorted data and writes it to standard output.  It will read
+standard input if no files are given on the command line (thus
+making it into a filter).  The sort is based on the machine collating
+sequence (ASCII) or based on  user-supplied ordering criteria.
+
+</P>
+
+
+
+<H2><A NAME="SEC44" HREF="textutils.html#TOC44">The <CODE>uniq</CODE> command</A></H2>
+
+<P>
+Finally (at least for now), we'll look at the <CODE>uniq</CODE> program.  When
+sorting data, you will often end up with duplicate lines, lines that
+are identical.  Usually, all you need is one instance of each line.
+This is where <CODE>uniq</CODE> comes in. The <CODE>uniq</CODE> program reads its
+standard input, which it expects to be sorted.  It only prints out one
+copy of each duplicated line.  It does have several options.  Later on,
+we'll use the <SAMP>`-c'</SAMP> option, which prints each unique line, preceded
+by a count of the number of times that line occurred in the input.
+
+</P>
+
+
+
+<H2><A NAME="SEC45" HREF="textutils.html#TOC45">Putting the tools together</A></H2>
+
+<P>
+Now, let's suppose this is a large BBS system with dozens of users
+logged in.  The management wants the SysOp to write a program that will
+generate a sorted list of logged in users.  Furthermore, even if a user
+is logged in multiple times, his or her name should only show up in the
+output once.
+
+</P>
+<P>
+The SysOp could sit down with the system documentation and write a C
+program that did this. It would take perhaps a couple of hundred lines
+of code and about two hours to write it, test it, and debug it.
+However, knowing the software toolbox, the SysOp can instead start out
+by generating just a list of logged on users:
+
+</P>
+
+<PRE>
+$ who | cut -c1-8
+arnold
+miriam
+bill
+arnold
+</PRE>
+
+<P>
+Next, sort the list:
+
+</P>
+
+<PRE>
+$ who | cut -c1-8 | sort
+arnold
+arnold
+bill
+miriam
+</PRE>
+
+<P>
+Finally, run the sorted list through <CODE>uniq</CODE>, to weed out duplicates:
+
+</P>
+
+<PRE>
+$ who | cut -c1-8 | sort | uniq
+arnold
+bill
+miriam
+</PRE>
+
+<P>
+The <CODE>sort</CODE> command actually has a <SAMP>`-u'</SAMP> option that does what
+<CODE>uniq</CODE> does. However, <CODE>uniq</CODE> has other uses for which one
+cannot substitute <SAMP>`sort -u'</SAMP>.
+
+</P>
+<P>
+The SysOp puts this pipeline into a shell script, and makes it available for
+all the users on the system:
+
+</P>
+
+<PRE>
+# cat &#62; /usr/local/bin/listusers
+who | cut -c1-8 | sort | uniq
+^D
+# chmod +x /usr/local/bin/listusers
+</PRE>
+
+<P>
+There are four major points to note here.  First, with just four
+programs, on one command line, the SysOp was able to save about two
+hours worth of work.  Furthermore, the shell pipeline is just about as
+efficient as the C program would be, and it is much more efficient in
+terms of programmer time.  People time is much more expensive than
+computer time, and in our modern "there's never enough time to do
+everything" society, saving two hours of programmer time is no mean
+feat.
+
+</P>
+<P>
+Second, it is also important to emphasize that with the
+<EM>combination</EM> of the tools, it is possible to do a special
+purpose job never imagined by the authors of the individual programs.
+
+</P>
+<P>
+Third, it is also valuable to build up your pipeline in stages, as we did here.
+This allows you to view the data at each stage in the pipeline, which helps
+you acquire the confidence that you are indeed using these tools correctly.
+
+</P>
+<P>
+Finally, by bundling the pipeline in a shell script, other users can use
+your command, without having to remember the fancy plumbing you set up for
+them. In terms of how you run them, shell scripts and compiled programs are
+indistinguishable.
+
+</P>
+<P>
+After the previous warm-up exercise, we'll look at two additional, more
+complicated pipelines.  For them, we need to introduce two more tools.
+
+</P>
+<P>
+The first is the <CODE>tr</CODE> command, which stands for "transliterate."
+The <CODE>tr</CODE> command works on a character-by-character basis, changing
+characters. Normally it is used for things like mapping upper case to
+lower case:
+
+</P>
+
+<PRE>
+$ echo ThIs ExAmPlE HaS MIXED case! | tr '[A-Z]' '[a-z]'
+this example has mixed case!
+</PRE>
+
+<P>
+There are several options of interest:
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-c'</SAMP>
+<DD>
+work on the complement of the listed characters, i.e.,
+operations apply to characters not in the given set
+
+<DT><SAMP>`-d'</SAMP>
+<DD>
+delete characters in the first set from the output
+
+<DT><SAMP>`-s'</SAMP>
+<DD>
+squeeze repeated characters in the output into just one character.
+</DL>
+
+<P>
+We will be using all three options in a moment.
+
+</P>
+<P>
+The other command we'll look at is <CODE>comm</CODE>.  The <CODE>comm</CODE>
+command takes two sorted input files as input data, and prints out the
+files' lines in three columns.  The output columns are the data lines
+unique to the first file, the data lines unique to the second file, and
+the data lines that are common to both.  The <SAMP>`-1'</SAMP>, <SAMP>`-2'</SAMP>, and
+<SAMP>`-3'</SAMP> command line options omit the respective columns. (This is
+non-intuitive and takes a little getting used to.)  For example:
+
+</P>
+
+<PRE>
+$ cat f1
+11111
+22222
+33333
+44444
+$ cat f2
+00000
+22222
+33333
+55555
+$ comm f1 f2
+        00000
+11111
+                22222
+                33333
+44444
+        55555
+</PRE>
+
+<P>
+The single dash as a filename tells <CODE>comm</CODE> to read standard input
+instead of a regular file.
+
+</P>
+<P>
+Now we're ready to build a fancy pipeline.  The first application is a word
+frequency counter.  This helps an author determine if he or she is over-using
+certain words.
+
+</P>
+<P>
+The first step is to change the case of all the letters in our input file
+to one case.  "The" and "the" are the same word when doing counting.
+
+</P>
+
+<PRE>
+$ tr '[A-Z]' '[a-z]' &#60; whats.gnu | ...
+</PRE>
+
+<P>
+The next step is to get rid of punctuation.  Quoted words and unquoted words
+should be treated identically; it's easiest to just get the punctuation out of
+the way.
+
+</P>
+
+<PRE>
+$ tr '[A-Z]' '[a-z]' &#60; whats.gnu | tr -cd '[A-Za-z0-9_ \012]' | ...
+</PRE>
+
+<P>
+The second <CODE>tr</CODE> command operates on the complement of the listed
+characters, which are all the letters, the digits, the underscore, and
+the blank.  The <SAMP>`\012'</SAMP> represents the newline character; it has to
+be left alone.  (The ASCII TAB character should also be included for
+good measure in a production script.)
+
+</P>
+<P>
+At this point, we have data consisting of words separated by blank space.
+The words only contain alphanumeric characters (and the underscore).  The
+next step is break the data apart so that we have one word per line. This
+makes the counting operation much easier, as we will see shortly.
+
+</P>
+
+<PRE>
+$ tr '[A-Z]' '[a-z]' &#60; whats.gnu | tr -cd '[A-Za-z0-9_ \012]' |
+&#62; tr -s '[ ]' '\012' | ...
+</PRE>
+
+<P>
+This command turns blanks into newlines.  The <SAMP>`-s'</SAMP> option squeezes
+multiple newline characters in the output into just one.  This helps us
+avoid blank lines. (The <SAMP>`&#62;'</SAMP> is the shell's "secondary prompt."
+This is what the shell prints when it notices you haven't finished
+typing in all of a command.)
+
+</P>
+<P>
+We now have data consisting of one word per line, no punctuation, all one
+case.  We're ready to count each word:
+
+</P>
+
+<PRE>
+$ tr '[A-Z]' '[a-z]' &#60; whats.gnu | tr -cd '[A-Za-z0-9_ \012]' |
+&#62; tr -s '[ ]' '\012' | sort | uniq -c | ...
+</PRE>
+
+<P>
+At this point, the data might look something like this:
+
+</P>
+
+<PRE>
+  60 a
+   2 able
+   6 about
+   1 above
+   2 accomplish
+   1 acquire
+   1 actually
+   2 additional
+</PRE>
+
+<P>
+The output is sorted by word, not by count!  What we want is the most
+frequently used words first.  Fortunately, this is easy to accomplish,
+with the help of two more <CODE>sort</CODE> options:
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`-n'</SAMP>
+<DD>
+do a numeric sort, not an ASCII one
+
+<DT><SAMP>`-r'</SAMP>
+<DD>
+reverse the order of the sort
+</DL>
+
+<P>
+The final pipeline looks like this:
+
+</P>
+
+<PRE>
+$ tr '[A-Z]' '[a-z]' &#60; whats.gnu | tr -cd '[A-Za-z0-9_ \012]' |
+&#62; tr -s '[ ]' '\012' | sort | uniq -c | sort -nr
+ 156 the
+  60 a
+  58 to
+  51 of
+  51 and
+ ...
+</PRE>
+
+<P>
+Whew!  That's a lot to digest.  Yet, the same principles apply. With six
+commands, on two lines (really one long one split for convenience), we've
+created a program that does something interesting and useful, in much
+less time than we could have written a C program to do the same thing.
+
+</P>
+<P>
+A minor modification to the above pipeline can give us a simple spelling
+checker!  To determine if you've spelled a word correctly, all you have to
+do is look it up in a dictionary.  If it is not there, then chances are
+that your spelling is incorrect.  So, we need a dictionary.  If you
+have the Slackware Linux distribution, you have the file
+<TT>`/usr/lib/ispell/ispell.words'</TT>, which is a sorted, 38,400 word
+dictionary.
+
+</P>
+<P>
+Now, how to compare our file with the dictionary?  As before, we generate
+a sorted list of words, one per line:
+
+</P>
+
+<PRE>
+$ tr '[A-Z]' '[a-z]' &#60; whats.gnu | tr -cd '[A-Za-z0-9_ \012]' |
+&#62; tr -s '[ ]' '\012' | sort -u | ...
+</PRE>
+
+<P>
+Now, all we need is a list of words that are <EM>not</EM> in the
+dictionary.  Here is where the <CODE>comm</CODE> command comes in.
+
+</P>
+
+<PRE>
+$ tr '[A-Z]' '[a-z]' &#60; whats.gnu | tr -cd '[A-Za-z0-9_ \012]' |
+&#62; tr -s '[ ]' '\012' | sort -u |
+&#62; comm -23 - /usr/lib/ispell/ispell.words
+</PRE>
+
+<P>
+The <SAMP>`-2'</SAMP> and <SAMP>`-3'</SAMP> options eliminate lines that are only in the
+dictionary (the second file), and lines that are in both files.  Lines
+only in the first file (standard input, our stream of words), are
+words that are not in the dictionary.  These are likely candidates for
+spelling errors.  This pipeline was the first cut at a production
+spelling checker on Unix.
+
+</P>
+<P>
+There are some other tools that deserve brief mention.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>grep</CODE>
+<DD>
+search files for text that matches a regular expression
+
+<DT><CODE>egrep</CODE>
+<DD>
+like <CODE>grep</CODE>, but with more powerful regular expressions
+
+<DT><CODE>wc</CODE>
+<DD>
+count lines, words, characters
+
+<DT><CODE>tee</CODE>
+<DD>
+a T-fitting for data pipes, copies data to files and to standard output
+
+<DT><CODE>sed</CODE>
+<DD>
+the stream editor, an advanced tool
+
+<DT><CODE>awk</CODE>
+<DD>
+a data manipulation language, another advanced tool
+</DL>
+
+<P>
+The software tools philosophy also espoused the following bit of
+advice: "Let someone else do the hard part." This means, take
+something that gives you most of what you need, and then massage it the
+rest of the way until it's in the form that you want.
+
+</P>
+<P>
+To summarize:
+
+</P>
+
+<OL>
+<LI>
+
+Each program should do one thing well. No more, no less.
+
+<LI>
+
+Combining programs with appropriate plumbing leads to results where
+the whole is greater than the sum of the parts.  It also leads to novel
+uses of programs that the authors might never have imagined.
+
+<LI>
+
+Programs should never print extraneous header or trailer data, since these
+could get sent on down a pipeline. (A point we didn't mention earlier.)
+
+<LI>
+
+Let someone else do the hard part.
+
+<LI>
+
+Know your toolbox! Use each program appropriately. If you don't have an
+appropriate tool, build one.
+</OL>
+
+<P>
+As of this writing, all the programs we've discussed are available via
+anonymous <CODE>ftp</CODE> from <CODE>prep.ai.mit.edu</CODE> as
+<TT>`/pub/gnu/textutils-1.9.tar.gz'</TT> directory.<A NAME="DOCF1" HREF="textutils.html#FOOT1">(1)</A>
+
+</P>
+<P>
+None of what I have presented in this column is new. The Software Tools
+philosophy was first introduced in the book <CITE>Software Tools</CITE>,
+by Brian Kernighan and P.J. Plauger (Addison-Wesley, ISBN
+0-201-03669-X).   This book showed how to write and use software
+tools.   It was written in 1976, using a preprocessor for FORTRAN named
+<CODE>ratfor</CODE> (RATional FORtran).  At the time, C was not as ubiquitous
+as it is now; FORTRAN was.  The last chapter presented a <CODE>ratfor</CODE>
+to FORTRAN processor, written in <CODE>ratfor</CODE>. <CODE>ratfor</CODE> looks an
+awful lot like C; if you know C, you won't have any problem following
+the code.
+
+</P>
+<P>
+In 1981, the book was updated and made available as <CITE>Software
+Tools in Pascal</CITE> (Addison-Wesley, ISBN 0-201-10342-7).  Both books
+remain in print, and are well worth reading if you're a programmer.
+They certainly made a major change in how I view programming.
+
+</P>
+<P>
+Initially, the programs in both books were available (on 9-track tape)
+from Addison-Wesley.  Unfortunately, this is no longer the case,
+although you might be able to find copies floating around the Internet.
+For a number of years, there was an active Software Tools Users Group,
+whose members had ported the original <CODE>ratfor</CODE> programs to essentially
+every computer system with a FORTRAN compiler.  The popularity of the
+group waned in the middle '80s as Unix began to spread beyond universities.
+
+</P>
+<P>
+With the current proliferation of GNU code and other clones of Unix programs,
+these programs now receive little attention; modern C versions are
+much more efficient and do more than these programs do.  Nevertheless, as
+exposition of good programming style, and evangelism for a still-valuable
+philosophy, these books are unparalleled, and I recommend them highly.
+
+</P>
+<P>
+Acknowledgment: I would like to express my gratitude to Brian Kernighan
+of Bell Labs, the original Software Toolsmith, for reviewing this column.
+
+</P>
+
+
+
+<H1><A NAME="SEC46" HREF="textutils.html#TOC46">Index</A></H1>
+
+<P>
+Jump to:
+<A HREF="#cindex_1">1</A>
+-
+<A HREF="#cindex_a">a</A>
+-
+<A HREF="#cindex_b">b</A>
+-
+<A HREF="#cindex_c">c</A>
+-
+<A HREF="#cindex_d">d</A>
+-
+<A HREF="#cindex_e">e</A>
+-
+<A HREF="#cindex_f">f</A>
+-
+<A HREF="#cindex_g">g</A>
+-
+<A HREF="#cindex_h">h</A>
+-
+<A HREF="#cindex_i">i</A>
+-
+<A HREF="#cindex_j">j</A>
+-
+<A HREF="#cindex_k">k</A>
+-
+<A HREF="#cindex_l">l</A>
+-
+<A HREF="#cindex_m">m</A>
+-
+<A HREF="#cindex_n">n</A>
+-
+<A HREF="#cindex_o">o</A>
+-
+<A HREF="#cindex_p">p</A>
+-
+<A HREF="#cindex_r">r</A>
+-
+<A HREF="#cindex_s">s</A>
+-
+<A HREF="#cindex_t">t</A>
+-
+<A HREF="#cindex_u">u</A>
+-
+<A HREF="#cindex_v">v</A>
+-
+<A HREF="#cindex_w">w</A>
+<P>
+<H2><A NAME="cindex_1">1</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX261">128-bit checksum</A>
+<LI><A HREF="textutils.html#IDX250">16-bit checksum</A>
+</DIR>
+<H2><A NAME="cindex_a">a</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX139">across columns</A>
+<LI><A HREF="textutils.html#IDX78">ASCII dump of files</A>
+</DIR>
+<H2><A NAME="cindex_b">b</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX371">backslash escapes</A>
+<LI><A HREF="textutils.html#IDX267">binary input files</A>
+<LI><A HREF="textutils.html#IDX61">blank lines, numbering</A>
+<LI><A HREF="textutils.html#IDX286">blanks, ignoring leading</A>
+<LI><A HREF="textutils.html#IDX45">body, numbering</A>
+<LI><A HREF="textutils.html#IDX253">BSD <CODE>sum</CODE></A>
+<LI><A HREF="textutils.html#IDX191">BSD <CODE>tail</CODE></A>
+<LI><A HREF="textutils.html#IDX3">bugs, reporting</A>
+<LI><A HREF="textutils.html#IDX238">byte count</A>
+</DIR>
+<H2><A NAME="cindex_c">c</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX291">case folding</A>
+<LI><A HREF="textutils.html#IDX11">cat</A>
+<LI><A HREF="textutils.html#IDX374">characters classes</A>
+<LI><A HREF="textutils.html#IDX281">checking for sortedness</A>
+<LI><A HREF="textutils.html#IDX262">checksum, 128-bit</A>
+<LI><A HREF="textutils.html#IDX251">checksum, 16-bit</A>
+<LI><A HREF="textutils.html#IDX257">cksum</A>
+<LI><A HREF="textutils.html#IDX332">comm</A>
+<LI><A HREF="textutils.html#IDX359">common field, joining on</A>
+<LI><A HREF="textutils.html#IDX336">common lines</A>
+<LI><A HREF="textutils.html#IDX4">common options</A>
+<LI><A HREF="textutils.html#IDX334">comparing sorted files</A>
+<LI><A HREF="textutils.html#IDX12">concatenate and write files</A>
+<LI><A HREF="textutils.html#IDX218">context splitting</A>
+<LI><A HREF="textutils.html#IDX394">converting tabs to spaces</A>
+<LI><A HREF="textutils.html#IDX13">copying files</A>
+<LI><A HREF="textutils.html#IDX259">CRC checksum</A>
+<LI><A HREF="textutils.html#IDX120">crown margin</A>
+<LI><A HREF="textutils.html#IDX217">csplit</A>
+<LI><A HREF="textutils.html#IDX340">cut</A>
+<LI><A HREF="textutils.html#IDX258">cyclic redundancy check</A>
+</DIR>
+<H2><A NAME="cindex_d">d</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX390">deleting characters</A>
+<LI><A HREF="textutils.html#IDX335">differing lines</A>
+<LI><A HREF="textutils.html#IDX142">double spacing</A>
+<LI><A HREF="textutils.html#IDX137">down columns</A>
+<LI><A HREF="textutils.html#IDX326">duplicate lines, outputting</A>
+</DIR>
+<H2><A NAME="cindex_e">e</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX60">empty lines, numbering</A>
+<LI><A HREF="textutils.html#IDX10">entire files, output of</A>
+<LI><A HREF="textutils.html#IDX387">equivalence classes</A>
+<LI><A HREF="textutils.html#IDX392">expand</A>
+</DIR>
+<H2><A NAME="cindex_f">f</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX305">field separator character</A>
+<LI><A HREF="textutils.html#IDX79">file contents, dumping unambiguously</A>
+<LI><A HREF="textutils.html#IDX83">file offset radix</A>
+<LI><A HREF="textutils.html#IDX263">fingerprint, 128-bit</A>
+<LI><A HREF="textutils.html#IDX178">first part of files, outputting</A>
+<LI><A HREF="textutils.html#IDX110">fmt</A>
+<LI><A HREF="textutils.html#IDX164">fold</A>
+<LI><A HREF="textutils.html#IDX166">folding long input lines</A>
+<LI><A HREF="textutils.html#IDX46">footers, numbering</A>
+<LI><A HREF="textutils.html#IDX109">formatting file contents</A>
+</DIR>
+<H2><A NAME="cindex_g">g</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX293">general numeric sort</A>
+<LI><A HREF="textutils.html#IDX198">growing files</A>
+</DIR>
+<H2><A NAME="cindex_h">h</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX176">head</A>
+<LI><A HREF="textutils.html#IDX44">headers, numbering</A>
+<LI><A HREF="textutils.html#IDX6">help, online</A>
+<LI><A HREF="textutils.html#IDX77">hex dump of files</A>
+</DIR>
+<H2><A NAME="cindex_i">i</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX156">indenting lines</A>
+<LI><A HREF="textutils.html#IDX177">initial part of files, outputting</A>
+<LI><A HREF="textutils.html#IDX401">initial tabs, converting</A>
+<LI><A HREF="textutils.html#IDX144">input tabs</A>
+<LI><A HREF="textutils.html#IDX1">introduction</A>
+</DIR>
+<H2><A NAME="cindex_j">j</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX358">join</A>
+</DIR>
+<H2><A NAME="cindex_k">k</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX116">Knuth, Donald E.</A>
+</DIR>
+<H2><A NAME="cindex_l">l</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX190">last part of files, outputting</A>
+<LI><A HREF="textutils.html#IDX157">left margin</A>
+<LI><A HREF="textutils.html#IDX240">line count</A>
+<LI><A HREF="textutils.html#IDX42">line numbering</A>
+<LI><A HREF="textutils.html#IDX114">line-breaking</A>
+<LI><A HREF="textutils.html#IDX333">line-by-line comparison</A>
+<LI><A HREF="textutils.html#IDX43">logical pages, numbering on</A>
+</DIR>
+<H2><A NAME="cindex_m">m</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX260">md5sum</A>
+<LI><A HREF="textutils.html#IDX353">merging files</A>
+<LI><A HREF="textutils.html#IDX134">merging files in parallel</A>
+<LI><A HREF="textutils.html#IDX283">merging sorted files</A>
+<LI><A HREF="textutils.html#IDX264">message-digest, 128-bit</A>
+<LI><A HREF="textutils.html#IDX297">months, sorting by</A>
+<LI><A HREF="textutils.html#IDX133">multicolumn output, generating</A>
+</DIR>
+<H2><A NAME="cindex_n">n</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX40">nl</A>
+<LI><A HREF="textutils.html#IDX41">numbering lines</A>
+<LI><A HREF="textutils.html#IDX299">numeric sort</A>
+</DIR>
+<H2><A NAME="cindex_o">o</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX76">octal dump of files</A>
+<LI><A HREF="textutils.html#IDX75">od</A>
+<LI><A HREF="textutils.html#IDX368">operating on characters</A>
+<LI><A HREF="textutils.html#IDX276">operating on sorted files</A>
+<LI><A HREF="textutils.html#IDX209">output file name prefix</A>, <A HREF="textutils.html#IDX222">output file name prefix</A>
+<LI><A HREF="textutils.html#IDX225">output file name suffix</A>
+<LI><A HREF="textutils.html#IDX9">output of entire files</A>
+<LI><A HREF="textutils.html#IDX174">output of parts of files</A>
+<LI><A HREF="textutils.html#IDX149">output tabs</A>
+<LI><A HREF="textutils.html#IDX303">overwriting of input, allowed</A>
+</DIR>
+<H2><A NAME="cindex_p">p</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX112">paragraphs, reformatting</A>
+<LI><A HREF="textutils.html#IDX175">parts of files, output of</A>
+<LI><A HREF="textutils.html#IDX352">paste</A>
+<LI><A HREF="textutils.html#IDX288">phone directory order</A>
+<LI><A HREF="textutils.html#IDX208">pieces, splitting a file into</A>
+<LI><A HREF="textutils.html#IDX117">Plass, Michael F.</A>
+<LI><A HREF="textutils.html#IDX2">POSIX.2</A>
+<LI><A HREF="textutils.html#IDX391">POSIXLY_CORRECT</A>
+<LI><A HREF="textutils.html#IDX131">pr</A>
+<LI><A HREF="textutils.html#IDX132">printing, preparing files for</A>
+</DIR>
+<H2><A NAME="cindex_r">r</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX82">radix for file offsets</A>
+<LI><A HREF="textutils.html#IDX372">ranges</A>
+<LI><A HREF="textutils.html#IDX111">reformatting paragraph text</A>
+<LI><A HREF="textutils.html#IDX373">repeated characters</A>
+<LI><A HREF="textutils.html#IDX301">reverse sorting</A>
+<LI><A HREF="textutils.html#IDX33">reversing files</A>
+</DIR>
+<H2><A NAME="cindex_s">s</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX167">screen columns</A>
+<LI><A HREF="textutils.html#IDX51">section delimiters of pages</A>
+<LI><A HREF="textutils.html#IDX115">sentences and line-breaking</A>
+<LI><A HREF="textutils.html#IDX278">sort</A>
+<LI><A HREF="textutils.html#IDX309">sort field</A>
+<LI><A HREF="textutils.html#IDX311">sort zero-terminated lines</A>
+<LI><A HREF="textutils.html#IDX277">sorted files, operations on</A>
+<LI><A HREF="textutils.html#IDX279">sorting files</A>
+<LI><A HREF="textutils.html#IDX370">specifying sets of characters</A>
+<LI><A HREF="textutils.html#IDX206">split</A>
+<LI><A HREF="textutils.html#IDX207">splitting a file into pieces</A>
+<LI><A HREF="textutils.html#IDX219">splitting a file into pieces by context</A>
+<LI><A HREF="textutils.html#IDX25">squeezing blank lines</A>
+<LI><A HREF="textutils.html#IDX389">squeezing repeat characters</A>
+<LI><A HREF="textutils.html#IDX90">string constants, outputting</A>
+<LI><A HREF="textutils.html#IDX249">sum</A>
+<LI><A HREF="textutils.html#IDX236">summarizing files</A>
+<LI><A HREF="textutils.html#IDX256">System V <CODE>sum</CODE></A>
+</DIR>
+<H2><A NAME="cindex_t">t</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX393">tabs to spaces, converting</A>
+<LI><A HREF="textutils.html#IDX398">tabstops, setting</A>
+<LI><A HREF="textutils.html#IDX32">tac</A>
+<LI><A HREF="textutils.html#IDX123">tagged paragraphs</A>
+<LI><A HREF="textutils.html#IDX189">tail</A>
+<LI><A HREF="textutils.html#IDX289">telephone directory order</A>
+<LI><A HREF="textutils.html#IDX272">text input files</A>
+<LI><A HREF="textutils.html#IDX113">text, reformatting</A>
+<LI><A HREF="textutils.html#IDX284">TMPDIR</A>
+<LI><A HREF="textutils.html#IDX241">total counts</A>
+<LI><A HREF="textutils.html#IDX369">tr</A>
+<LI><A HREF="textutils.html#IDX388">translating characters</A>
+<LI><A HREF="textutils.html#IDX93">type size</A>
+</DIR>
+<H2><A NAME="cindex_u">u</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX402">unexpand</A>
+<LI><A HREF="textutils.html#IDX312">uniq</A>
+<LI><A HREF="textutils.html#IDX313">uniqify files</A>
+<LI><A HREF="textutils.html#IDX307">uniqifying output</A>
+<LI><A HREF="textutils.html#IDX329">unique lines, outputting</A>
+<LI><A HREF="textutils.html#IDX295">unprintable characters, ignoring</A>
+</DIR>
+<H2><A NAME="cindex_v">v</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX269">verifying MD5 checksums</A>, <A HREF="textutils.html#IDX275">verifying MD5 checksums</A>
+<LI><A HREF="textutils.html#IDX8">version number, finding</A>
+</DIR>
+<H2><A NAME="cindex_w">w</A></H2>
+<DIR>
+<LI><A HREF="textutils.html#IDX237">wc</A>
+<LI><A HREF="textutils.html#IDX239">word count</A>
+<LI><A HREF="textutils.html#IDX165">wrapping long input lines</A>
+</DIR>
+
+</P>
+<P><HR><P>
+<H1>Footnotes</H1>
+<H3><A NAME="FOOT1" HREF="textutils.html#DOCF1">(1)</A></H3>
+<P>Version 1.9 was
+current when this column was written. Check the nearest GNU archive for
+the current version.
+<P><HR><P>
+This document was generated on 7 November 1998 using the
+<A HREF="http://wwwinfo.cern.ch/dis/texi2html/">texi2html</A>
+translator version 1.52.</P>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

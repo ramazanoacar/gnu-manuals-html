@@ -3,7 +3,7 @@
 Single-page HTML copies of GNU manuals, taken from Internet Archive Wayback Machine snapshots (October 2026) of the pages on gnu.org.
 gnu.org was unreachable when these were collected, so this repository makes the same documentation available for indexing.
 
-Scripts, stylesheets and images were removed; the text is unchanged.
+Scripts, stylesheets and images were removed from the Wayback copies; the text is unchanged. `gnumach-0.3.html` and `textutils-1.22.html` are unmodified copies of the gnu.huihoo.com mirror pages (not archived in the Wayback Machine).
 
 ## License
 
@@ -41,3 +41,5 @@ Each manual is distributed under the license stated in its own copying section (
 | `manuals/texinfo.html` | https://www.gnu.org/s/texinfo/manual/texinfo/texinfo.html |
 | `manuals/texinfo-4.2.html` | https://ftp.gnu.org/old-gnu/Manuals/texinfo-4.2/html_mono/texinfo.html |
 | `manuals/wget.html` | https://www.gnu.org/software/wget/manual/wget.html |
+| `manuals/gnumach-0.3.html` | https://gnu.huihoo.com/machinfo-0.3/html_mono/mach.html |
+| `manuals/textutils-1.22.html` | https://gnu.huihoo.com/textutils-1.22/html_mono/textutils.html |
