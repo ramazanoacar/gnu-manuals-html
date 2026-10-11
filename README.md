@@ -7,7 +7,7 @@ Scripts, stylesheets and images were removed from the Wayback copies; the text i
 
 ## License
 
-Each manual is distributed under the license stated in its own copying section (mostly the GNU Free Documentation License), which is kept in every file. Manuals whose copy here does not carry its license text were left out. Copyright belongs to the Free Software Foundation and the respective authors. This repository only redistributes them unmodified apart from the removal of scripts, stylesheets and images.
+Each manual is distributed under the license stated in its own copying section (mostly the GNU Free Documentation License), which is kept in every file. Manuals whose copy here does not carry its license text were left out, except termcap, whose notice was restored from its Texinfo source. Copyright belongs to the Free Software Foundation and the respective authors. This repository only redistributes them unmodified apart from the removal of scripts, stylesheets and images.
 
 ## Contents
 
@@ -45,3 +45,4 @@ Each manual is distributed under the license stated in its own copying section (
 | `manuals/textutils-1.22.html` | https://gnu.huihoo.com/textutils-1.22/html_mono/textutils.html |
 | `manuals/units.html` | https://www.gnu.org/software/units/manual/units.html |
 | `emacs/emacs-21.2.html` | http://gnu.cs.utah.edu/Manuals/emacs-21.2/html_mono/emacs.html (Wayback snapshot 2024-08-19) |
+| `manuals/termcap-1.3.html` | https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html (Wayback snapshot 2026-10-03; copyright and permission notice from termcap.texi in termcap-1.3.1 added at the top) |
