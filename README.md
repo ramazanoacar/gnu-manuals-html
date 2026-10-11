@@ -43,3 +43,5 @@ Each manual is distributed under the license stated in its own copying section (
 | `manuals/wget.html` | https://www.gnu.org/software/wget/manual/wget.html |
 | `manuals/gnumach-0.3.html` | https://gnu.huihoo.com/machinfo-0.3/html_mono/mach.html |
 | `manuals/textutils-1.22.html` | https://gnu.huihoo.com/textutils-1.22/html_mono/textutils.html |
+| `manuals/units.html` | https://www.gnu.org/software/units/manual/units.html |
+| `emacs/emacs-21.2.html` | http://gnu.cs.utah.edu/Manuals/emacs-21.2/html_mono/emacs.html (Wayback snapshot 2024-08-19) |
